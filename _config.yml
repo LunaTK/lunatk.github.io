@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: LunaTK's Blog
 subtitle:
-description:
-keywords:
+description: 태근이의 개인 블로그
+keywords: developer, coding, tech
 author: 문태근
 language: ko
-timezone:
+timezone: Asia/Seoul
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -35,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -56,7 +56,7 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-tag_map:
+tag_map: true
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -83,3 +83,7 @@ deploy:
   type: git
   repo: https://github.com/LunaTK/lunatk.github.io.git
   branch: master
+
+  # sitemap auto generator
+sitemap:
+  path: sitemap.xml
