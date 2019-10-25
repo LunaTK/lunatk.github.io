@@ -396,8 +396,9 @@ img.thumbnail {
 }
 .content code {
   color: #ff3860;
-  background: transparent;
-  padding: 0;
+  background: #f9f1f3;
+  padding: 1px 4px;
+  border-radius: 4px;
 }
 .content blockquote footer strong + cite {
   margin-left: 0.5em;

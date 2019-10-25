@@ -19,7 +19,7 @@
 <meta property="og:description" content="Node.js 에서 request 모듈을 사용하여 학교 홈페이지를 크롤링 하는 도중 한글이 깨지는 문제가 발생하였다.">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png">
-<meta property="og:updated_time" content="2019-10-25T08:37:51.530Z">
+<meta property="og:updated_time" content="2019-10-25T08:41:27.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js 에서 request 한글 깨짐 문제">
 <meta name="twitter:description" content="Node.js 에서 request 모듈을 사용하여 학교 홈페이지를 크롤링 하는 도중 한글이 깨지는 문제가 발생하였다.">
@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 읽기 (나에 대하여 585 단어)
+                    4분 읽기 (나에 대하여 586 단어)
                 </span>
                 
                 
@@ -194,14 +194,9 @@
 <p>이때문에 <code>EUC-KR</code>을 잘못 다루면 <code>占쏙옙</code> 파티를 볼 수 있게 되는 것이었다.</p>
 <p>내가 겪은 문제는 아마 request 모듈에서 <code>EUC-KR</code>을 제대로 처리하지 않고 바로 <code>UTF-8</code>로 저장을 해서, 이미 � 으로 다 치환이 된 상태에서 <code>EUC-KR</code> 디코딩을 시도한게 원인인 것 같았다.</p>
 <h1 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h1><p>해결방법은 간단하다. request 모듈이 문자열 인코딩 처리를 안하게 해주면 된다.</p>
-<pre><code>request({
-        url:&quot;http://icampus.ac.kr&quot; // 원하는 url값을 입력
-        ,encoding: null //해당 값을 null로 해주어야 제대로 iconv가 제대로 decode 해준다.
-    }
-    ,(err, res, body) =&gt; {
-        // 생략
-    }
-})</code></pre><p>출처 : <a href="http://b1ix.net/322" target="_blank" rel="noopener">http://b1ix.net/322</a></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">		url:<span class="hljs-string">"http://icampus.ac.kr"</span> <span class="hljs-comment">// 원하는 url값을 입력</span></span><br><span class="line">		,<span class="hljs-attr">encoding</span>: <span class="hljs-literal">null</span> <span class="hljs-comment">//해당 값을 null로 해주어야 제대로 iconv가 제대로 decode 해준다.</span></span><br><span class="line">	&#125;</span><br><span class="line">	,(err, res, body) =&gt; &#123;</span><br><span class="line">		<span class="hljs-comment">// 생략</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>출처 : <a href="http://b1ix.net/322" target="_blank" rel="noopener">http://b1ix.net/322</a></p>
 <p><img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-ffb78e78-64e5-4140-b438-bfa4bba91389.png" alt></p>
 <p>야! 잘된다</p>
 
