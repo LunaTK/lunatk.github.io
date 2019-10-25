@@ -3,7 +3,7 @@ title: webpack:// 경로는 무엇일까?
 date: 2019-10-21 19:37:29
 tags: webpack
 category:
-    - Programming
+    - Development
     - Web
 thumbnail: /2019/10/21/20191021-what-is-webpack-path/img2.png
 toc: true
