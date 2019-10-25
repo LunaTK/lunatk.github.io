@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>https://lunatk.github.io/tags/node-js/</loc>
+        <lastmod>2019-10-25T08:37:51.530Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/tags/webpack/</loc>
-        <lastmod>2019-10-24T18:15:24.984Z</lastmod>
+        <lastmod>2019-10-25T08:37:51.522Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

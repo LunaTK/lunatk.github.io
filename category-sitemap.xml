@@ -8,15 +8,22 @@
     </url>
 
     <url>
-        <loc>https://lunatk.github.io/categories/Programming/Web/</loc>
-        <lastmod>2019-10-24T18:15:24.984Z</lastmod>
+        <loc>https://lunatk.github.io/categories/Development/Node-js/</loc>
+        <lastmod>2019-10-25T08:37:51.530Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://lunatk.github.io/categories/Programming/</loc>
-        <lastmod>2019-10-24T18:15:24.984Z</lastmod>
+        <loc>https://lunatk.github.io/categories/Development/</loc>
+        <lastmod>2019-10-25T08:37:51.530Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lunatk.github.io/categories/Development/Web/</loc>
+        <lastmod>2019-10-25T08:37:51.522Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
