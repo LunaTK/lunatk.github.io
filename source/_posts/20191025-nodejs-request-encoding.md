@@ -83,6 +83,7 @@ EUC-KR 처리 후 한글 깨짐 현상
 
 해결방법은 간단하다. request 모듈이 문자열 인코딩 처리를 안하게 해주면 된다.
 
+```javascript
     request({
     		url:"http://icampus.ac.kr" // 원하는 url값을 입력
     		,encoding: null //해당 값을 null로 해주어야 제대로 iconv가 제대로 decode 해준다.
@@ -91,7 +92,7 @@ EUC-KR 처리 후 한글 깨짐 현상
     		// 생략
     	}
     })
-
+```
 출처 : [http://b1ix.net/322](http://b1ix.net/322)
 
 ![](/2019/10/25/20191025-nodejs-request-encoding/Untitled-ffb78e78-64e5-4140-b438-bfa4bba91389.png)
