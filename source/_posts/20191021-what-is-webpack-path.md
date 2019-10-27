@@ -7,6 +7,7 @@ category:
     - Web
 thumbnail: /2019/10/21/20191021-what-is-webpack-path/img2.png
 toc: true
+comments: true
 ---
 
 학교 아이캠퍼스 소스를 보다, 웹사이트 리소스에서 신기한걸 발견했다.

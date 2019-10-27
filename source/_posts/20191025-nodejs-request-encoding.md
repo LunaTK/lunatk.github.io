@@ -7,6 +7,7 @@ category:
     - Node.js
 thumbnail: /2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png
 toc: true
+comments: true
 ---
 
 Node.js 에서 `request` 모듈을 사용하여 학교 홈페이지를 크롤링 하는 도중 한글이 깨지는 문제가 발생하였다.

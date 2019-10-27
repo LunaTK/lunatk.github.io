@@ -7,4 +7,5 @@ category:
     - 
 thumbnail:
 toc: true
+comments: true
 ---

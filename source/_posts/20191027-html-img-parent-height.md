@@ -1,11 +1,12 @@
 ---
 title: img 태그와 부모 태그의 높이가 왜 다를까?
-date: 2019-10-27 23:28:45
+date: 2019-10-28 00:45:45
 tags: css
 category:
     - Development
     - Web
 thumbnail: /2019/10/27/20191027-html-img-parent-height/img1.png
+comments: true
 ---
 
 블로그에 URL 미리보기 기능을 만들던 도중 `img` 태그와 부모 태그의 높이가 다른 버그가 발생하였다.
