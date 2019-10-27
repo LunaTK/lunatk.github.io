@@ -8,8 +8,8 @@
     </url>
 
     <url>
-        <loc>https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/</loc>
-        <lastmod>2019-10-25T08:41:27.716Z</lastmod>
+        <loc>https://lunatk.github.io/2019/10/27/20191027-html-img-parent-height/</loc>
+        <lastmod>2019-10-27T15:43:56.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +17,15 @@
 
     <url>
         <loc>https://lunatk.github.io/2019/10/21/20191021-what-is-webpack-path/</loc>
-        <lastmod>2019-10-25T08:37:51.522Z</lastmod>
+        <lastmod>2019-10-27T15:43:10.380Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/</loc>
+        <lastmod>2019-10-27T15:43:03.676Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
