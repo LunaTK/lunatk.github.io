@@ -7,32 +7,6 @@ category:
     - Web
 thumbnail: /2019/10/21/20191021-what-is-webpack-path/img2.png
 toc: true
-widgets:
-  - 
-    type: toc
-    position: right
-  -
-    type: recent_posts
-    position: right
-  -
-    type: profile
-    position: left
-    author: 문태근
-    author_title: Graduate Student @ SKKU
-    location: Suwon, South Korea
-    avatar: /res/profile.jpg
-    avatar_rounded: true
-    follow_link: 'https://github.com/LunaTK'
-    social_links:
-        Github:
-            icon: fab fa-github
-            url: 'https://github.com/LunaTK'
-        LinkdIn:
-            icon: fab fa-linkedin
-            url: 'https://www.linkedin.com/in/taegeun-moon-9bb2bb133/'
-  -
-    type: category
-    position: left
 ---
 
 학교 아이캠퍼스 소스를 보다, 웹사이트 리소스에서 신기한걸 발견했다.
