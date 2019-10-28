@@ -5,7 +5,7 @@ tags: css
 category:
     - Development
     - Web
-thumbnail: /2019/10/27/20191027-html-img-parent-height/img1.png
+thumbnail: /2019/10/28/20191028-html-img-parent-height/img1.png
 comments: true
 ---
 

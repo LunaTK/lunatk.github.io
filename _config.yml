@@ -90,3 +90,5 @@ sitemap:
 
 # resource minifier
 all_minifier: true
+html_minifier:
+  enable: false
