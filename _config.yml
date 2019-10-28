@@ -84,6 +84,9 @@ deploy:
   repo: https://github.com/LunaTK/lunatk.github.io.git
   branch: master
 
-  # sitemap auto generator
+# sitemap auto generator
 sitemap:
   path: sitemap.xml
+
+# resource minifier
+all_minifier: true
