@@ -11,6 +11,9 @@ author: 문태근
 language: ko
 timezone: Asia/Seoul
 
+# Google Analytics settings
+ga_track_id: UA-151045385-1
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://lunatk.github.io
