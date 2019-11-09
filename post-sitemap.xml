@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://lunatk.github.io/2019/11/09/20191109-purgecss-with-rollup-and-svelte/</loc>
+        <lastmod>2019-11-09T14:55:31.181Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/2019/10/28/20191028-html-img-parent-height/</loc>
         <lastmod>2019-10-28T02:17:31.572Z</lastmod>
         <changefreq>weekly</changefreq>
