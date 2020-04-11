@@ -19,7 +19,7 @@
 <meta property="og:description" content="Meteor는 Node.js 기반 Fullstack Web Framework이다. 이 글에서는 백엔드에서 프론트엔드 이외의 외부 클라이언트와 통신하는 기능을 추가하는 방법에 대해 이야기해 보고자 한다.">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://lunatk.github.io/2020/04/11/20200411-meteor-grpc-ddp/meteor_grpc.png">
-<meta property="og:updated_time" content="2020-04-11T05:38:09.276Z">
+<meta property="og:updated_time" content="2020-04-11T12:32:00.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Meteor에서 gRPC, DDP 사용하기">
 <meta name="twitter:description" content="Meteor는 Node.js 기반 Fullstack Web Framework이다. 이 글에서는 백엔드에서 프론트엔드 이외의 외부 클라이언트와 통신하는 기능을 추가하는 방법에 대해 이야기해 보고자 한다.">
@@ -163,7 +163,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11분 읽기 (나에 대하여 1698 단어)
+                    11분 읽기 (나에 대하여 1697 단어)
                 </span>
                 
                 
@@ -179,7 +179,7 @@
             <p>Meteor는 Node.js 기반 Fullstack Web Framework이다. 이 글에서는 백엔드에서 프론트엔드 이외의 외부 클라이언트와 통신하는 기능을 추가하는 방법에 대해 이야기해 보고자 한다.</p>
 <a id="more"></a>
 
-<p>Meteor는 기본적으로 웹소켓을 이용해 프론트엔드와 백엔드가 통신할 수 있는 기능을 제공한다. 이 기능을 통해 프론트엔드 개발을 할 때 MongoDB를 마지 서버에서 접근하듯이 손쉽게 다룰 수 있다.</p>
+<p>Meteor는 기본적으로 웹소켓을 이용해 프론트엔드와 백엔드가 통신할 수 있는 기능을 제공한다. 이 기능을 통해 프론트엔드 개발을 할 때 MongoDB를 마치 서버에서 접근하듯이 손쉽게 다룰 수 있다.</p>
 <p>하지만 이번 프로젝트 요구사항에는 프론트엔드, 백엔드가 아닌 제3의 클라이언트가 간단한 DB operation을 할 수 있는 기능이 필요하였다. </p>
 <p>간단히 소개하자면, 실행이 오랫동안 걸리는 반복 수행 작업을 쉘 스크립트로 돌릴 때, 어느정도 진행되었는지를 Meteor 서버에게 알려주고 웹 프론트엔드로 모니터링 할 수 있는 서비스이다.</p>
 <p>여러 조사 끝에 정리한 후보는 다음과 같다.</p>
@@ -209,7 +209,7 @@
 </ol>
 <h3 id="사용법"><a href="#사용법" class="headerlink" title="사용법"></a>사용법</h3><p>일반적으로 Node.js에서 gRPC 서버 여는 방법을 따라하였다. (<a href="https://medium.com/trabe/node-js-grpc-services-in-style-222389be991a" target="_blank" rel="noopener">Node.js gRPC Services in Style</a>)</p>
 <p>다만 gRPC 서버를 Meteor에서 사용하려만 한가지 제약이 있는데, gRPC 서버에서 Meteor의 DB 함수를 사용하려면 <code>Meteor.bindEnvironment</code> 라는 함수로 래핑 해주어야 한다. 그렇게 복잡하지는 않고 코드 한두줄이 추가되는 정도이다. 자세한 내용은 <a href="https://forums.meteor.com/t/meteor-code-must-always-run-within-a-fiber-try-wrapping-callbacks-that-you-pass-to-non-meteor-libraries-with-meteor-bindenvironmen/40099" target="_blank" rel="noopener">Meteor code must always run within a Fiber</a> 를 참고하였다.</p>
-<figure class="highlight javascript hljs"><figcaption><span>rollup.config.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bound = Meteor.bindEnvironment(<span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> &#123;callback();&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> newSession = <span class="hljs-function">(<span class="hljs-params">call, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(call.request);</span><br><span class="line">  </span><br><span class="line">  bound(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    Tasks.insert(&#123;</span><br><span class="line">      title: call.request.title,</span><br><span class="line">      createdAt: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),</span><br><span class="line">    &#125;, (err, res) =&gt; &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(err, res);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    callback(<span class="hljs-literal">null</span>, &#123; <span class="hljs-comment">/* response data here */</span> &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><figcaption><span>grpc.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bound = Meteor.bindEnvironment(<span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> &#123;callback();&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> newSession = <span class="hljs-function">(<span class="hljs-params">call, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(call.request);</span><br><span class="line">  </span><br><span class="line">  bound(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    Tasks.insert(&#123;</span><br><span class="line">      title: call.request.title,</span><br><span class="line">      createdAt: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),</span><br><span class="line">    &#125;, (err, res) =&gt; &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(err, res);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    callback(<span class="hljs-literal">null</span>, &#123; <span class="hljs-comment">/* response data here */</span> &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Distributed-Data-Protocol-DDP"><a href="#Distributed-Data-Protocol-DDP" class="headerlink" title="Distributed Data Protocol (DDP)"></a>Distributed Data Protocol (DDP)</h2><p>공식 소개글 : <a href="https://blog.meteor.com/introducing-ddp-6b40c6aff27d" target="_blank" rel="noopener">Introducing DDP</a></p>
 <p>Meteor에 gRPC 올리는 방법을 찾아보다 알아낸 기능인데, 아마 이게 뭔지 아는사람은 거의 없을것 같다. Meteor 개발자팀이 만든 프로토콜로, <strong>Meteor의 프론트엔드와 백엔드가 웹소켓으로 통신할때 사용하는 프로토콜이다</strong>. </p>
