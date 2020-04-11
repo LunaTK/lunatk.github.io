@@ -16,7 +16,7 @@ Meteor는 Node.js 기반 Fullstack Web Framework이다. 이 글에서는 백엔�
 
 <!--More-->
 
-Meteor는 기본적으로 웹소켓을 이용해 프론트엔드와 백엔드가 통신할 수 있는 기능을 제공한다. 이 기능을 통해 프론트엔드 개발을 할 때 MongoDB를 마지 서버에서 접근하듯이 손쉽게 다룰 수 있다.
+Meteor는 기본적으로 웹소켓을 이용해 프론트엔드와 백엔드가 통신할 수 있는 기능을 제공한다. 이 기능을 통해 프론트엔드 개발을 할 때 MongoDB를 마치 서버에서 접근하듯이 손쉽게 다룰 수 있다.
 
 하지만 이번 프로젝트 요구사항에는 프론트엔드, 백엔드가 아닌 제3의 클라이언트가 간단한 DB operation을 할 수 있는 기능이 필요하였다. 
 
@@ -57,7 +57,7 @@ gRPC는 구글에서 만들고 오픈 소스로 운영 중인 RPC(Remote Procedu
 
 다만 gRPC 서버를 Meteor에서 사용하려만 한가지 제약이 있는데, gRPC 서버에서 Meteor의 DB 함수를 사용하려면 `Meteor.bindEnvironment` 라는 함수로 래핑 해주어야 한다. 그렇게 복잡하지는 않고 코드 한두줄이 추가되는 정도이다. 자세한 내용은 [Meteor code must always run within a Fiber](https://forums.meteor.com/t/meteor-code-must-always-run-within-a-fiber-try-wrapping-callbacks-that-you-pass-to-non-meteor-libraries-with-meteor-bindenvironmen/40099) 를 참고하였다.
 
-{% codeblock rollup.config.js lang:javascript %}
+{% codeblock grpc.js lang:javascript %}
 const bound = Meteor.bindEnvironment((callback) => {callback();});
 
 const newSession = (call, callback) => {
