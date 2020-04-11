@@ -89,7 +89,7 @@ thumbnail: /2019/11/09/20191109-purgecss-with-rollup-and-svelte/thumbnail.png
 
 나는 빌드환경을 Rollup으로 잡아놓았기 때문에, 공식 사이트에 나와있는 Rollup 가이드를 확인해 보았다.
 
-{% linkPreview https://www.purgecss.com/with-rollup _blank nofollow %}
+***updated 2020.04.11 : 현재는 페이지가 삭제되었다***
 
 <center>
   {% asset_img img3.png %}
