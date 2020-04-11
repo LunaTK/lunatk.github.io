@@ -7,23 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Rollup &amp; Svelte 에서 PurgeCSS 사용하기 - LunaTK&#39;s Blog</title>
+<title>아카이브: 2020/4 - LunaTK&#39;s Blog</title>
 
 
-    <meta name="description" content="외주 프로젝트용 Web Component 개발에 UI 라이브러리를 사용하니, 빌드된 컴포넌트 사이즈가 너무 큰 문제가 발생해 PurgeCSS를 이용해 최적화를 해 보기로 하였다.">
-<meta name="keywords" content="css,rollup,svelte">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Rollup &amp; Svelte 에서 PurgeCSS 사용하기">
-<meta property="og:url" content="https://lunatk.github.io/2019/11/09/20191109-purgecss-with-rollup-and-svelte/index.html">
+    <meta name="description" content="태근이의 개인 블로그">
+<meta name="keywords" content="developer, coding, tech">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LunaTK&#39;s Blog">
+<meta property="og:url" content="https://lunatk.github.io/archives/2020/04/index.html">
 <meta property="og:site_name" content="LunaTK&#39;s Blog">
-<meta property="og:description" content="외주 프로젝트용 Web Component 개발에 UI 라이브러리를 사용하니, 빌드된 컴포넌트 사이즈가 너무 큰 문제가 발생해 PurgeCSS를 이용해 최적화를 해 보기로 하였다.">
+<meta property="og:description" content="태근이의 개인 블로그">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="https://lunatk.github.io/2019/11/09/20191109-purgecss-with-rollup-and-svelte/thumbnail.png">
-<meta property="og:updated_time" content="2020-04-11T05:38:55.276Z">
+<meta property="og:image" content="https://lunatk.github.io/images/og_image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rollup &amp; Svelte 에서 PurgeCSS 사용하기">
-<meta name="twitter:description" content="외주 프로젝트용 Web Component 개발에 UI 라이브러리를 사용하니, 빌드된 컴포넌트 사이즈가 너무 큰 문제가 발생해 PurgeCSS를 이용해 최적화를 해 보기로 하였다.">
-<meta name="twitter:image" content="https://lunatk.github.io/2019/11/09/20191109-purgecss-with-rollup-and-svelte/thumbnail.png">
+<meta name="twitter:title" content="LunaTK&#39;s Blog">
+<meta name="twitter:description" content="태근이의 개인 블로그">
+<meta name="twitter:image" content="https://lunatk.github.io/images/og_image.png">
 
 
 
@@ -87,7 +86,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Rollup &amp; Svelte 에서 PurgeCSS 사용하기" height="28">
+                <img src="/images/logo.svg" alt="LunaTK&#39;s Blog" height="28">
             
             </a>
         </div>
@@ -123,10 +122,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="검색" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -141,223 +136,44 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/thumbnail.png" alt="Rollup &amp; Svelte 에서 PurgeCSS 사용하기">
-        </span>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-09T12:27:16.000Z">2019-11-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Development/">Development</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11분 읽기 (나에 대하여 1690 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                Rollup &amp; Svelte 에서 PurgeCSS 사용하기
-            
-        </h1>
-        <div class="content">
-            <p>외주 프로젝트용 Web Component 개발에 UI 라이브러리를 사용하니, 빌드된 컴포넌트 사이즈가 너무 큰 문제가 발생해 PurgeCSS를 이용해 최적화를 해 보기로 하였다.</p>
-<a id="more"></a>
 
-<p>개발 환경은 다음과 같았다.</p>
-<ul>
-<li><strong>Front-End Framework</strong> : <a href="https://svelte.dev/blog/svelte-3-rethinking-reactivity" target="_blank" rel="noopener">Svelte</a></li>
-<li><strong>Module Bundler</strong> : <a href="https://rollupjs.org" target="_blank" rel="noopener">Rollup.js</a></li>
-<li><strong>UI Library</strong> : <a href="https://bulma.io" target="_blank" rel="noopener">Bulma</a></li>
-</ul>
-<p>디자인을 전달받기 전이라 우선 UI 라이브러리를 사용하여 개발을 진행하였다.<br><em>Rollup</em>은 자바스크립트 번들러이기 때문에, 기본적으로는 진짜 자바스크립트 파일밖에 번들링을 못한다.<br>따라서 <code>.svelte</code>, <code>.css</code> 파일을 번들링 하기 위해서는 적절한 플러그인을 적용해 주어야 한다.</p>
-<h3 id="1-Rollup-Plugin-추가"><a href="#1-Rollup-Plugin-추가" class="headerlink" title="1. Rollup Plugin 추가"></a>1. Rollup Plugin 추가</h3><figure class="highlight javascript hljs"><figcaption><span>rollup.config.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> svelte <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-svelte'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> postcss <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-postcss'</span>;</span><br><span class="line"><span class="hljs-comment">// 몇가지 Plugin을 더 사용했지만, 생략</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  input: <span class="hljs-string">'src/index.js'</span>,</span><br><span class="line">  output: [</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.<span class="hljs-built_in">module</span>&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'es'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.main&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'umd'</span>, name &#125;</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    svelte(),</span><br><span class="line">    postcss()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>rollup-plugin-svelte</code> 를 통해 .svelte 파일을 로드하고, <code>rollup-plugin-postcss</code> 를 통해 .css 파일을 로드할 수 있게 설정하였다.</p>
-<p>이제 svelte 파일의 <code>script</code> 부분에서 <em>Bulma</em>의 css 파일를 import 할 수 있다.</p>
-<h3 id="2-svelte-컴포넌트에서-css-파일-import-하기"><a href="#2-svelte-컴포넌트에서-css-파일-import-하기" class="headerlink" title="2. svelte 컴포넌트에서 css 파일 import 하기"></a>2. svelte 컴포넌트에서 <code>css</code> 파일 import 하기</h3><figure class="highlight html hljs"><figcaption><span>component.svelte</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> <span class="hljs-string">'bulma/css/bulma.css'</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//생략</span></span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">// Svelte HTML 부분</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 해서 만들어진 컴포넌트는 아래처럼 생겼다.</p>
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img1.png">
-  <small>
-    Svelte와 Bulma를 이용한 스마트폰 검색 Web Component
-  </small>
-</center>
-
-<p>그런데 문제가 생겼다. css 파일을 import 하면 이를 string으로 바꿔서 통째로 번들링 해버리기 때문에, 쓰지 않는 속성까지 다 포함되어 용량이 너무 컸던 것이었다.</p>
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img2.png">
-  <small>
-    Web Component 치고는 무거운 결과물
-  </small>
-</center>
-
-<p>요즘 웹사이트 하나 <em>webpack</em>으로 빌드하면 기본이 몇 MB 이니, 260kb 정도면 작다 생각할 수 있지만, 이건 웹 컴포넌트로 쓸꺼라 최대한 줄일 필요가 있었다.</p>
-<p>그래서 사용하지 않는 css 속성을 제거해준다는 <a href="https://www.purgecss.com" target="_blank" rel="noopener">PurgeCSS</a>라는 툴을 사용해 보기로 했다. (이름이 ㅎㄷㄷ 하다. CSS 숙청…😦)</p>
-<h2 id="PurgeCSS"><a href="#PurgeCSS" class="headerlink" title="PurgeCSS"></a>PurgeCSS</h2><p>우선 PostCSS는 Webpack, Gulp, Grunt, Rollup 등 그냥 아무데나 다 갖다 쓸 수있고, 심지어 그냥 Standalone 으로도 쓸 수 있는 툴이다.</p>
-<p>나는 빌드환경을 Rollup으로 잡아놓았기 때문에, 공식 사이트에 나와있는 Rollup 가이드를 확인해 보았다.</p>
-<p><strong><em>updated 2020.04.11 : 현재는 페이지가 삭제되었다</em></strong></p>
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img3.png">
-  <small>
-    PurgeCSS With Rollup
-  </small>
-</center>
-
-<p>이게 끝이다. 그냥 저 페이지에 저거밖에 없었다…</p>
-<p>정보가 너무 빈약해서 Configuration을 살펴보았다.</p>
-<figure class="highlight javascript hljs"><figcaption><span>Options</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  content: <span class="hljs-built_in">Array</span>&lt;string | RawContent&gt;,</span><br><span class="line">  css: <span class="hljs-built_in">Array</span>&lt;string | RawContent&gt;,</span><br><span class="line">  extractors?: <span class="hljs-built_in">Array</span>&lt;ExtractorsObj&gt;,</span><br><span class="line">  whitelist?: <span class="hljs-built_in">Array</span>&lt;string&gt;,</span><br><span class="line">  whitelistPatterns?: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">RegExp</span>&gt;,</span><br><span class="line">  whitelistPatternsChildren?: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">RegExp</span>&gt;,</span><br><span class="line">  keyframes?: boolean,</span><br><span class="line">  fontFace?: boolean,</span><br><span class="line">  rejected?: boolean</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>중요한 부분만 보자면 다음과 같았다.</p>
-<ul>
-<li><code>content</code> : css 사용 여부를 확인할 파일 (ex. html, js)</li>
-<li><code>css</code> : 숙청할 css 파일</li>
-<li><code>extractors</code> : content에서 css selector를 추출해 주는 친구</li>
-<li><code>whitelist</code> : 사용되지 않더라도 숙청하지 않을 css selector 목록</li>
-</ul>
-<p><strong>With Rollup</strong> 가이드를 보면, <code>content</code>로 html 파일을 사용하고 있다. <code>.svelte</code> 파일도 사용 가능한지 공식 문서를 확인해 보았다.</p>
-<blockquote>
-<p>PurgeCSS provides a default extractor that is working with <strong>all types of files</strong><br>but can be limited and not fit exactly the type of files or css framework that you are using.</p>
-</blockquote>
-<p>확인해 보니 Default Extractor로도 모든 파일이 다 된다고 한다<del>(우와 개쩐다)</del>. 하지만 좀더 정확히 하려면 Custom Extractor를 만들어 쓰라고 한다. </p>
-<p><a href="https://github.com/langbamit/purgecss-from-svelte" target="_blank" rel="noopener">langbamit/purgecss-from-html</a> 이라는 누가 만들어 놓은 Svelte용 Extractor가 있었다. 결론부터 말하면 이거 안써도 똑같이 잘 되서 처음엔 썼지만 마지막 단계에서는 그냥 안쓰기로 하였다.</p>
-<p>이제 PurgeCSS를 Rollup에 적용해 보았다.</p>
-<figure class="highlight javascript hljs"><figcaption><span>rollup.config.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> svelte <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-svelte'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> postcss <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-postcss'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> purgecss <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-purgecss'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> PurgeSvelte <span class="hljs-keyword">from</span> <span class="hljs-string">"purgecss-from-svelte"</span>;</span><br><span class="line"><span class="hljs-comment">// 몇가지 Plugin을 더 사용했지만, 생략</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  input: <span class="hljs-string">'src/index.js'</span>,</span><br><span class="line">  output: [</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.<span class="hljs-built_in">module</span>&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'es'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.main&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'umd'</span>, name &#125;</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    svelte(),</span><br><span class="line">    postcss(),</span><br><span class="line">    purgecss(&#123;</span><br><span class="line">      content: [<span class="hljs-string">"./src/**/*.svelte"</span>],</span><br><span class="line">      extractors: [</span><br><span class="line">        &#123;</span><br><span class="line">          extractor: PurgeSvelte,</span><br><span class="line">          extensions: [<span class="hljs-string">"svelte"</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>여기서 한방에 되면 재미가 없으니, 바로 오류를 뿜어주는 Rollup…</p>
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img4.png">
-</center>
-
-<p>CssSyntaxError 라는 키워드로 구글링을 하다 다음 StackOverflow 게시글을 발견했다</p>
-<a href="https://github.com/webpack-contrib/mini-css-extract-plugin/issues/358" class="link-preview" target="_blank" rel="nofollow"><div class="link-area"><div class="og-image"><img src="https://avatars3.githubusercontent.com/u/25012217?s=400&v=4"></div><div class="descriptions"><div class="og-title">CssSyntaxError  (1:1) Unknown word  &gt; 1 | // extracted by mini-css-extract-plugin · Issue #358 · webpack-contrib/mini-css-extract-plugin</div><div class="og-description">mode: &amp;#39;production&amp;#39;, devtool: &amp;#39;#source-map&amp;#39;, plugins: [ new webpack.DefinePlugin({ &amp;#39;process.env.NODE_ENV&amp;#39;: JSON.strin…</div></div></div></a>
-
-<blockquote>
-<p>you have <strong>multiple loader</strong> for css please check your configuration</p>
-</blockquote>
-<p>css loader를 여러개 설정해서 생기는 에러라고 한다. 그래서 <code>postcss</code> 플러그인을 빼고 <code>purgecss</code>만 남겨보았는데, 또 에러가 발생하면서 안되었다.</p>
-<p>좀더 구글링을 하던중, 어느 외국회사 <strong>GitLab</strong>이 떴다…! (다음에 <strong>GitLab</strong> 쓸일이 있으면 조심해야겠다…) 운이 좋게도 그곳에서 해답을 얻을 수 있었다.</p>
-<p><strong>PurgeCSS</strong>를 <strong>Rollup</strong> Plugin이 아니라 <strong>PostCSS의 Plugin으로</strong> 만들어 놓은게 있었다 (<a href="https://github.com/FullHuman/postcss-purgecss" target="_blank" rel="noopener">FullHuman/postcss-purgecss</a>). </p>
-<p>성공한 Rollup 설정은 다음과 같다.</p>
-<figure class="highlight javascript hljs"><figcaption><span>rollup.config.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> svelte <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-svelte'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> postcss <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-postcss'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> Purgecss <span class="hljs-keyword">from</span> <span class="hljs-string">"@fullhuman/postcss-purgecss"</span></span><br><span class="line"><span class="hljs-keyword">import</span> PurgeSvelte <span class="hljs-keyword">from</span> <span class="hljs-string">"purgecss-from-svelte"</span>;</span><br><span class="line"><span class="hljs-comment">// 몇가지 Plugin을 더 사용했지만, 생략</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> purgeCss = Purgecss(&#123;</span><br><span class="line">  content: [<span class="hljs-string">"./src/**/*.svelte"</span>],</span><br><span class="line">  extractors: [</span><br><span class="line">    &#123;</span><br><span class="line">      extractor: PurgeSvelte,</span><br><span class="line">      extensions: [<span class="hljs-string">"svelte"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  input: <span class="hljs-string">'src/index.js'</span>,</span><br><span class="line">  output: [</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.<span class="hljs-built_in">module</span>&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'es'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.main&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'umd'</span>, name &#125;</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    svelte(),</span><br><span class="line">    postcss(&#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        purgeCss</span><br><span class="line">      ]</span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img5.png">
-  <small>
-    PurgeCSS 적용한 결과물 File Size
-  </small>
-</center>
-
-<p>결과는 감동적이었다. 264kb 에서 46kb로 무려 <strong>83% 감소</strong>하였다…😭</p>
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img6.png">
-  <small>
-    PurgeCSS 적용한 결과물
-  </small>
-</center>
-
-<p>그런데 위 사진처럼 폰트가 좀 이상하게 나왔다. 확인해 보니 아래 selector가 날라갔다. 아마 <strong>Bulma</strong> 라이브러리가 폰트를 모든 Element에 적용하기 위해 <code>body</code> 태그에 적용했는데, <code>.svelte</code> 파일 내에서 <code>body</code>태그를 직접적으로 사용하는 부분이 없어서 안쓴다고 판단되 삭제된것같다.</p>
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img8.png">
-  <small>
-    `body` selector로 폰트가 적용되어있다
-  </small>
-</center>
-
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img7.png">
-  <small>
-    `body` selector가 삭제되었다
-  </small>
-</center>
-
-<p>그래서 <strong>PurgeCSS</strong> 의 <code>whitelist</code>에 <code>body</code>를 추가해 주었다.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight javascript hljs"><figcaption><span>rollup.config.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> svelte <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-svelte'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> postcss <span class="hljs-keyword">from</span> <span class="hljs-string">'rollup-plugin-postcss'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> Purgecss <span class="hljs-keyword">from</span> <span class="hljs-string">"@fullhuman/postcss-purgecss"</span></span><br><span class="line"><span class="hljs-comment">// import PurgeSvelte from "purgecss-from-svelte";</span></span><br><span class="line"><span class="hljs-comment">// purgecss-from-svelte 는 안써도 문제 없다</span></span><br><span class="line"><span class="hljs-comment">// 몇가지 Plugin을 더 사용했지만, 생략</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> purgeCss = Purgecss(&#123;</span><br><span class="line">  content: [<span class="hljs-string">"./src/**/*.svelte"</span>],</span><br><span class="line"> whitelist: [<span class="hljs-string">'body'</span>] <span class="hljs-comment">// whitelist 추가</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  input: <span class="hljs-string">'src/index.js'</span>,</span><br><span class="line">  output: [</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.<span class="hljs-built_in">module</span>&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'es'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">file</span>: <span class="hljs-string">`public/<span class="hljs-subst">$&#123;pkg.main&#125;</span>`</span>, <span class="hljs-string">'format'</span>: <span class="hljs-string">'umd'</span>, name &#125;</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    svelte(),</span><br><span class="line">    postcss(&#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        purgeCss</span><br><span class="line">      ]</span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<center>
-  <img src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/img1.png">
-</center>
-
-<p>폰트가 성공적으로 잘 적용되었다. 빌드된 모듈 용량은 거의 그대로였다.</p>
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/css/">css</a>, <a class="has-link-grey -link" href="/tags/rollup/">rollup</a>, <a class="has-link-grey -link" href="/tags/svelte/">svelte</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5daec0480ce1380019631c89&amp;product=inline-share-buttons' async='async'></script>
-
-        
-    </div>
-</div>
-
-
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/11/20200411-meteor-grpc-ddp/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Meteor에서 gRPC, DDP 사용하기</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/28/20191028-html-img-parent-height/">
-                <span class="level-item">img 태그와 부모 태그의 높이가 왜 다를까?</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
+<div class="card widget">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">댓글</h3>
-        <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ko/sdk.js#xfbml=1&version=v2.8";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-comments" data-width="100%" data-href="https://lunatk.github.io/2019/11/09/20191109-purgecss-with-rollup-and-svelte/" data-num-posts="5"></div>
-
+        <h3 class="tag is-link">
+        4월 2020
+        </h3>
+        <div class="timeline">
+        
+            <article class="media">
+                
+                <a href="/2020/04/11/20200411-meteor-grpc-ddp/" class="media-left">
+                    <p class="image is-64x64">
+                        <img class="thumbnail" src="/2020/04/11/20200411-meteor-grpc-ddp/meteor_grpc.png" alt="Meteor에서 gRPC, DDP 사용하기">
+                    </p>
+                </a>
+                
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-04-11T04:39:33.000Z">2020-04-11</time>
+                        <a href="/2020/04/11/20200411-meteor-grpc-ddp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Meteor에서 gRPC, DDP 사용하기</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+        </div>
     </div>
 </div>
+
+
 </div>
                 
 
@@ -516,32 +332,6 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                카탈로그
-            </h3>
-            <ul class="menu-list"><ul class="menu-list"><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-Rollup-Plugin-추가">
-        <span class="has-mr-6">1.1.1</span>
-        <span>1. Rollup Plugin 추가</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-svelte-컴포넌트에서-css-파일-import-하기">
-        <span class="has-mr-6">1.1.2</span>
-        <span>2. svelte 컴포넌트에서 css 파일 import 하기</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#PurgeCSS">
-        <span class="has-mr-6">1.2</span>
-        <span>PurgeCSS</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#Solution">
-        <span class="has-mr-6">2</span>
-        <span>Solution</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
         
             <div class="card widget">
     <div class="card-content">
@@ -767,32 +557,6 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                카탈로그
-            </h3>
-            <ul class="menu-list"><ul class="menu-list"><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-Rollup-Plugin-추가">
-        <span class="has-mr-6">1.1.1</span>
-        <span>1. Rollup Plugin 추가</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-svelte-컴포넌트에서-css-파일-import-하기">
-        <span class="has-mr-6">1.1.2</span>
-        <span>2. svelte 컴포넌트에서 css 파일 import 하기</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#PurgeCSS">
-        <span class="has-mr-6">1.2</span>
-        <span>PurgeCSS</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#Solution">
-        <span class="has-mr-6">2</span>
-        <span>Solution</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
     
         <div class="card widget">
     <div class="card-content">
@@ -1018,7 +782,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Rollup &amp; Svelte 에서 PurgeCSS 사용하기" height="28">
+                    <img src="/images/logo.svg" alt="LunaTK&#39;s Blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
