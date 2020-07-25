@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html  lang="ko">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>러스트 시작해보기 - LunaTK&#39;s Blog</title>
+
+
+    <meta name="description" content="요새 러스트가 핫하다고 해서 한번 배워보았고, 알고리즘 문제를 풀어보며 C++과 느낌이 어떻게 다른지 비교 해 보았다.">
+<meta name="keywords" content="Rust,Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="러스트 시작해보기">
+<meta property="og:url" content="https://lunatk.github.io/2020/07/24/20200724-starting-rust/index.html">
+<meta property="og:site_name" content="LunaTK&#39;s Blog">
+<meta property="og:description" content="요새 러스트가 핫하다고 해서 한번 배워보았고, 알고리즘 문제를 풀어보며 C++과 느낌이 어떻게 다른지 비교 해 보았다.">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://lunatk.github.io/2020/07/24/20200724-starting-rust/thumbnail.png">
+<meta property="og:updated_time" content="2020-07-25T06:16:31.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="러스트 시작해보기">
+<meta name="twitter:description" content="요새 러스트가 핫하다고 해서 한번 배워보았고, 알고리즘 문제를 풀어보며 C++과 느낌이 어떻게 다른지 비교 해 보았다.">
+<meta name="twitter:image" content="https://lunatk.github.io/2020/07/24/20200724-starting-rust/thumbnail.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151045385-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151045385-1');
+</script>
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="러스트 시작해보기" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="https://www.notion.so/lunatk/Portfolio-ae8cd5fadf92422398c1e7042ec9475d">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/LunaTK">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="검색" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/2020/07/24/20200724-starting-rust/thumbnail.png" alt="러스트 시작해보기">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-24T13:50:38.000Z">2020-07-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14분 읽기 (나에 대하여 2109 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                러스트 시작해보기
+            
+        </h1>
+        <div class="content">
+            <p>요새 러스트가 핫하다고 해서 한번 배워보았고, 알고리즘 문제를 풀어보며 C++과 느낌이 어떻게 다른지 비교 해 보았다.</p>
+<a id="more"></a>
+
+<h1 id="Why-Rust"><a href="#Why-Rust" class="headerlink" title="Why Rust?"></a>Why Rust?</h1><p>요즘들어 파이썬이나 Node.js로 작업을 많이 하고 있었는데, 용량이 수십 MB, 수 GB 하는 데이터를 처리하다 보니 속도가 느린게 너무 심하게 체감이 되었다. 스크립팅 언어의 퍼포먼스 한계를 느끼면서, 네이티브로 컴파일되는 언어도 하나 배워야 할 필요성을 느끼게 되었다. 그래서 요즘 핫한 Go와 Rust 둘중에 고민하였는데, </p>
+<p>결론부터 말하면 둘을 비교하는것 자체가 적절하지 않고, 어느 하나가 더 좋다고 할 수 없다고 느겼다. 이 둘이 목표로 하는 방향성 자체가 다르기 때문이다. Rust는 더 나은 C++을 지향하고, Go는 더 나은 Java를 지향한다고 한다(내 체감상으로는 Java보다는 Python과 비교하는게 더 맞는것 같다). 물론 단순 퍼포먼스만 보자면 Rust가 평균적으로 살~~짝 좋다고 한다 (<a href="https://blog.stibee.com/golang-vs-rust-퍼포먼스-벤치마킹-썰-bac94bc26e2e" target="_blank" rel="noopener">Golang vs Rust 퍼포먼스 벤치마킹 썰</a>). </p>
+<p>Rust와 Go를 비교하는건 다음에 해보기로 하고, 이 글에서는 Rust와 C++로 알고리즘 문제를 풀어보며 내가 느낀 차이점을 비교해 보려 한다. </p>
+<h1 id="알고리즘-문제-풀어보기"><a href="#알고리즘-문제-풀어보기" class="headerlink" title="알고리즘 문제 풀어보기"></a>알고리즘 문제 풀어보기</h1><p>알고리즘 문제는 백준에 올라와있는 간단한 BFS문제를 선택하였다(<a href="https://www.acmicpc.net/problem/2178" target="_blank" rel="noopener">2178. 미로탐색</a>). 둘의 코드가 최대한 비슷한 모양이 되도록 하기 위해 C++17으로 작성하였다.</p>
+<p>나는 C++도 많이 안 다루어 보았고, Rust도 간단한 문법만 배우고 써본것이라 둘 다 적절한 코딩 스타일과 기능을 사용하지 않았을 수 있으니 감안하고 보면 좋을 것 같다…</p>
+<center>
+  <img src="/2020/07/24/20200724-starting-rust/comparison.png">
+  <small>
+    C++와 Rust로 작성한 코드(왼쪽: C++, 오른쪽: Rust)
+  </small>
+</center>
+
+<p>약간의 줄바꿈 조절이 있긴 했지만, 둘 다 50줄 정도의 코드가 나왔고, 예상보다 C++과 Rust의 코드 모습이 그렇게 크게 다르진 않았다.</p>
+<p>우선은 C++부터 살펴보고, 이를 Rust로 그대로 옮기면서 Rust 컴파일러가 뱉은 에러를 하나씩 살펴보며 Rust가 어떻게 Memory Safety를 제공하는지 생각해 보았다.</p>
+<h2 id="C-풀이"><a href="#C-풀이" class="headerlink" title="C++ 풀이"></a>C++ 풀이</h2><figure class="highlight cpp hljs"><figcaption><span>2178.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Step</span> &#123;</span> <span class="hljs-keyword">int</span> x, y, c; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> DIRS[][<span class="hljs-number">2</span>] = &#123;</span><br><span class="line">    &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">char</span> field[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>] = &#123;<span class="hljs-string">'\0'</span>&#125;;</span><br><span class="line">    <span class="hljs-keyword">bool</span> visited[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>] = &#123;<span class="hljs-literal">false</span>,&#125;;</span><br><span class="line">    <span class="hljs-built_in">string</span> tmp;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> n, m;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; tmp;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-built_in">stringstream</span> ss = <span class="hljs-built_in">stringstream</span>(tmp);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m ; j++) &#123;</span><br><span class="line">            ss &gt;&gt; field[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">deque</span>&lt;Step&gt; que; que.push_back(Step&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;);</span><br><span class="line">    visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (que.size() &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        Step s = que.front(); que.pop_front();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> [dx, dy] : DIRS) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> nx = s.x + dx, ny = s.y + dy;</span><br><span class="line">            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= nx &amp;&amp; nx &lt; n &amp;&amp; <span class="hljs-number">0</span> &lt;= ny &lt; m) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (visited[nx][ny] || field[nx][ny] == <span class="hljs-string">'0'</span>) &#123;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nx == n<span class="hljs-number">-1</span> &amp;&amp; ny == m<span class="hljs-number">-1</span>) &#123;</span><br><span class="line">                    <span class="hljs-built_in">cout</span> &lt;&lt; s.c + <span class="hljs-number">2</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">                    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    visited[nx][ny] = <span class="hljs-literal">true</span>;</span><br><span class="line">                    que.push_back(Step&#123;nx, ny, s.c+<span class="hljs-number">1</span>&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><del>위 코드는 테스트 케이스는 통과하긴 하는데, 백준에 제출하면 오답으로 뜬다.</del></p>
+<h2 id="Rust-풀이"><a href="#Rust-풀이" class="headerlink" title="Rust 풀이"></a>Rust 풀이</h2><figure class="highlight rust hljs"><figcaption><span>2178.rs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> std::io;</span><br><span class="line"><span class="hljs-keyword">use</span> std::collections::VecDeque;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">static</span> DIRS: [[<span class="hljs-built_in">i32</span>; <span class="hljs-number">2</span>]; <span class="hljs-number">4</span>] = [</span><br><span class="line">  [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> field = [[<span class="hljs-string">b'\0'</span>; <span class="hljs-number">100</span>]; <span class="hljs-number">100</span>];</span><br><span class="line">  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> visited = [[<span class="hljs-literal">false</span>; <span class="hljs-number">100</span>]; <span class="hljs-number">100</span>];</span><br><span class="line">  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = <span class="hljs-built_in">String</span>::new();</span><br><span class="line">  io::stdin().read_line(&amp;<span class="hljs-keyword">mut</span> s).expect(<span class="hljs-string">"Unexpected EOL"</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">let</span> x = &amp;s.split_whitespace()</span><br><span class="line">    .map(|s| s.parse().unwrap())</span><br><span class="line">    .collect::&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt;()[..<span class="hljs-number">2</span>];</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">let</span> (n, m) = (x[<span class="hljs-number">0</span>], x[<span class="hljs-number">1</span>]);</span><br><span class="line">  s.clear();</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..n <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span> &#123;</span><br><span class="line">    io::stdin().read_line(&amp;<span class="hljs-keyword">mut</span> s).expect(<span class="hljs-string">"Unexpected EOL"</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..m <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span> &#123;</span><br><span class="line">      field[i][j] = s.as_bytes()[j];</span><br><span class="line">    &#125;</span><br><span class="line">    s.clear();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> que = VecDeque::from(<span class="hljs-built_in">vec!</span>[(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0u32</span>)]);</span><br><span class="line">  visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> que.len() &gt; <span class="hljs-number">0</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> (x, y, c) = que.pop_front().unwrap();</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">for</span> [dx, dy] <span class="hljs-keyword">in</span> DIRS.iter() &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> (nx, ny) = (x + dx, y + dy);</span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span>..n).contains(&amp;nx) &amp;&amp; (<span class="hljs-number">0</span>..m).contains(&amp;ny)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> visited[nx <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span>][ny <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span>] </span><br><span class="line">          || field[nx <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span>][ny <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span>] == <span class="hljs-string">b'0'</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">continue</span></span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nx, ny) == (n-<span class="hljs-number">1</span>, m-<span class="hljs-number">1</span>) &#123;</span><br><span class="line">          <span class="hljs-built_in">println!</span>(<span class="hljs-string">"&#123;&#125;"</span>, c+<span class="hljs-number">2</span>);</span><br><span class="line">          <span class="hljs-keyword">return</span></span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          visited[nx <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span>][ny <span class="hljs-keyword">as</span> <span class="hljs-built_in">usize</span>] = <span class="hljs-literal">true</span>;</span><br><span class="line">          que.push_back((nx, ny, c+<span class="hljs-number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>다음은 Rust로 코드를 옮기면서 겪은 어려움과 느낀점이다.</p>
+<h3 id="인풋-받는게-불편함"><a href="#인풋-받는게-불편함" class="headerlink" title="인풋 받는게 불편함"></a>인풋 받는게 불편함</h3><p><code>scanf</code> 같은 함수가 없어서 한줄을 받고 직접 파싱을 해야 했고, <code>string</code>이 int로 인덱싱이 안되서 <code>as_bytes</code>함수로 바이트 어레이로 바꾼 다음 한 바이트씩 뽑아야 했다. 다른건 몰라도 인풋받는거 때문에 알고리즘 문제를 푸는데는 C++이 나은것 같다.</p>
+<h3 id="메모리-접근에-대해-매우-깐깐함"><a href="#메모리-접근에-대해-매우-깐깐함" class="headerlink" title="메모리 접근에 대해 매우 깐깐함"></a>메모리 접근에 대해 매우 깐깐함</h3><p>38, 39번 줄을 보면 <code>visited</code>, <code>field</code> 배열의 인덱스로 사용되는 <code>nx</code>, <code>ny</code>를 <code>usize</code>로 캐스팅 해서 쓰는것을 볼 수 있다. 이는 Rust가 강제하는 사항으로, 배열의 인덱스는 무조건 <code>usize</code> 타입이어야 한다. 또한 범위를 초과하는 인덱스로 접근하면 바로 크래시가 나며 프로그램을 종료한다고 한다. </p>
+<p>알고리즘 문제라는 특수한 상황에서는 그럴일이 거의 없겠지만, 실제 프로그램 개발시에는 저런 문제로 메모리 접근 취약점이 발생할 수 있는데, C++로 풀때는 아무생각없이 signed integer를 인덱스로 사용했는데 Rust가 강제로 잡아주니 뭔가 나쁜 습관을 교정받는 느낌이었다.</p>
+<h3 id="값의-소유와-대여"><a href="#값의-소유와-대여" class="headerlink" title="값의 소유와 대여"></a>값의 소유와 대여</h3><p>위 코드에서도 나와있는데, </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (0..n).contains(&amp;nx) &amp;&amp; (0..m).contains(&amp;ny)&#123;</span><br></pre></td></tr></table></figure>
+
+<p>부분에서 <code>contains</code>함수가 <code>nx</code>, <code>ny</code> 값을 변경하는거도 아닌데 레퍼런스로 값을 받고 있다. 이는 contains함수가 파라미터로 받은 값을 소유하게 되는것이 아니라 단순히 잠깐 빌려쓰기 때문이다. 또한 <code>nx</code>, <code>ny</code>는 immutable 하기 때문에, contains 함수는 값을 소유하지도, 변경하지도 않을 것이란것을 <strong>컴파일러가</strong> 알 수 있다.</p>
+<p>소유권이라는 개념을 새로운 키워드 없이 레퍼런스라는 개념 위에 얹어 간단하게 구현한게 아주 신기했다.</p>
+<h2 id="그래도-C-과-Rust의-비슷한-점"><a href="#그래도-C-과-Rust의-비슷한-점" class="headerlink" title="그래도 C++과 Rust의 비슷한 점"></a>그래도 C++과 Rust의 비슷한 점</h2><ul>
+<li>일단 둘 다 표준 라이브러리가 Snake Case로 이름을 짓는다. 그리고 두 코드 모두 STL에 포함된 Deque를 썼는데, 둘의 메소드 이름이 거의 똑같았다 (e.g., <code>push_back</code>).</li>
+<li>포인터와 레퍼런스 개념도 C++와 Rust가 거의 유사한것 같다. 다른점은 Rust에서 포인터(*)는 Unsafe 취급을 받고, 레퍼런스는 사용에 제약(소유, 대여)이 많다는 정도?</li>
+<li>C++17과 비교하면 문법적인 차원에서 큰 차이는 없는것 같다.</li>
+</ul>
+<h1 id="Memory-Safety가-잘-보장될까"><a href="#Memory-Safety가-잘-보장될까" class="headerlink" title="Memory Safety가 잘 보장될까?"></a>Memory Safety가 잘 보장될까?</h1><p>정말 저런 단순한 아이디어로 Memory Safety가 보장될까? 라고 생각할 수 있다. </p>
+<p>그런데 사실 위에 작성한 C++, Rust 코드는 Rust부터 작성하고 C++로 번역한 것인데, 신기한것은 Rust는 정답이라 뜨는데 C++는 몇몇 인풋에 대해 답은 뜨는데 메모리 에러가 뜬다. C++로 작성할때 일부러 메모리 접근에 큰 신경을 안쓰긴 했지만, 실제로 Rust 컴파일러가 이러한 문제점을 잘 잡아주는 것 같다.</p>
+<p>흥미로우신 분들은 위 C++코드에서 메모리 문제가 발생하는 원인을 알아보아도 좋을 것 같다.</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>내가 느낀 Rust는 한마디로 정의하면 <strong>Memory safety가 추가된 Modern C++</strong> 인것 같다.</p>
+<p>언어차원의 Tuple, Range 지원 등을 제외하면 C++17에서도 람다함수, destructuring 등등 많은 현대적인 언어 기능을 지원하고 있어 문법적인 측변에서 차이는 그렇게 크지 않은것 같았다. </p>
+<p>하지만 Memory Safety 관련해서는 깐깐한 과외선생님을 옆에 두고 코딩하는 느낌을 받았으며, 확실히 Rust 컴파일러가 제공하는 Memory Safety 교정을 받으면 안전한 프로그램을 만드는데 큰 도움이 될 것 같다고 느꼈다.</p>
+<p>근데 너무 깐깐해서 크고 중요한 프로젝트가 아니면 그냥 Go 쓰는게 나을것 같다 😏.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://blog.stibee.com/golang-vs-rust-퍼포먼스-벤치마킹-썰-bac94bc26e2e" target="_blank" rel="noopener">Golang vs Rust 퍼포먼스 벤치마킹 썰</a></li>
+<li><a href="https://www.acmicpc.net/problem/2178" target="_blank" rel="noopener">2178. 미로탐색</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>, <a class="has-link-grey -link" href="/tags/Rust/">Rust</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5daec0480ce1380019631c89&amp;product=inline-share-buttons' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/11/20200411-meteor-grpc-ddp/">
+                <span class="level-item">Meteor에서 gRPC, DDP 사용하기</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">댓글</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://lunatk.github.io/2020/07/24/20200724-starting-rust/" data-num-posts="5"></div>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/res/profile.jpg" alt="문태근">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        문태근
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Graduate Student @ SKKU
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Suwon, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        포스트
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        카테고리
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        태그
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/LunaTK">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="LinkdIn" href="https://www.linkedin.com/in/taegeun-moon-9bb2bb133/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Email" href="mailto:xorms987@gmail.com">
+                
+                <i class="fa fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="KakaoTalk" href="/res/kakao.jpg">
+                
+                <i class="fa fa-comment"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카테고리
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Development/">
+            <span class="level-start">
+                <span class="level-item">Development</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Development/Node-js/">
+            <span class="level-start">
+                <span class="level-item">Node.js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Development/Web/">
+            <span class="level-start">
+                <span class="level-item">Web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming-Language/">
+            <span class="level-start">
+                <span class="level-item">Programming Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            태그 클라우드
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/gRPC/" style="font-size: 10px;">gRPC</a> <a href="/tags/meteor/" style="font-size: 10px;">meteor</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/rollup/" style="font-size: 10px;">rollup</a> <a href="/tags/svelte/" style="font-size: 10px;">svelte</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카탈로그
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Why-Rust">
+        <span class="has-mr-6">1</span>
+        <span>Why Rust?</span>
+        </a></li><li>
+        <a class="is-flex" href="#알고리즘-문제-풀어보기">
+        <span class="has-mr-6">2</span>
+        <span>알고리즘 문제 풀어보기</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#C-풀이">
+        <span class="has-mr-6">2.1</span>
+        <span>C++ 풀이</span>
+        </a></li><li>
+        <a class="is-flex" href="#Rust-풀이">
+        <span class="has-mr-6">2.2</span>
+        <span>Rust 풀이</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#인풋-받는게-불편함">
+        <span class="has-mr-6">2.2.1</span>
+        <span>인풋 받는게 불편함</span>
+        </a></li><li>
+        <a class="is-flex" href="#메모리-접근에-대해-매우-깐깐함">
+        <span class="has-mr-6">2.2.2</span>
+        <span>메모리 접근에 대해 매우 깐깐함</span>
+        </a></li><li>
+        <a class="is-flex" href="#값의-소유와-대여">
+        <span class="has-mr-6">2.2.3</span>
+        <span>값의 소유와 대여</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#그래도-C-과-Rust의-비슷한-점">
+        <span class="has-mr-6">2.3</span>
+        <span>그래도 C++과 Rust의 비슷한 점</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Memory-Safety가-잘-보장될까">
+        <span class="has-mr-6">3</span>
+        <span>Memory Safety가 잘 보장될까?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Summary">
+        <span class="has-mr-6">4</span>
+        <span>Summary</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">5</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            최근 글
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/20200724-starting-rust/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/24/20200724-starting-rust/thumbnail.png" alt="러스트 시작해보기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T13:50:38.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/20200724-starting-rust/" class="title has-link-black-ter is-size-6 has-text-weight-normal">러스트 시작해보기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/20200411-meteor-grpc-ddp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/11/20200411-meteor-grpc-ddp/meteor_grpc.png" alt="Meteor에서 gRPC, DDP 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T04:39:33.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/20200411-meteor-grpc-ddp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Meteor에서 gRPC, DDP 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/thumbnail.png" alt="Rollup &amp; Svelte 에서 PurgeCSS 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T12:27:16.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rollup &amp; Svelte 에서 PurgeCSS 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/28/20191028-html-img-parent-height/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/10/28/20191028-html-img-parent-height/img1.png" alt="img 태그와 부모 태그의 높이가 왜 다를까?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:45:45.000Z">2019-10-28</time></div>
+                    <a href="/2019/10/28/20191028-html-img-parent-height/" class="title has-link-black-ter is-size-6 has-text-weight-normal">img 태그와 부모 태그의 높이가 왜 다를까?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png" alt="Node.js 에서 request 한글 깨짐 문제">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T08:28:11.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js 에서 request 한글 깨짐 문제</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Node-js/">Node.js</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            아카이브
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">7월 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">4월 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">11월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                태그
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rust/">
+                        <span class="tag">Rust</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gRPC/">
+                        <span class="tag">gRPC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meteor/">
+                        <span class="tag">meteor</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/node-js/">
+                        <span class="tag">node.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/rollup/">
+                        <span class="tag">rollup</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/svelte/">
+                        <span class="tag">svelte</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/webpack/">
+                        <span class="tag">webpack</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카탈로그
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Why-Rust">
+        <span class="has-mr-6">1</span>
+        <span>Why Rust?</span>
+        </a></li><li>
+        <a class="is-flex" href="#알고리즘-문제-풀어보기">
+        <span class="has-mr-6">2</span>
+        <span>알고리즘 문제 풀어보기</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#C-풀이">
+        <span class="has-mr-6">2.1</span>
+        <span>C++ 풀이</span>
+        </a></li><li>
+        <a class="is-flex" href="#Rust-풀이">
+        <span class="has-mr-6">2.2</span>
+        <span>Rust 풀이</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#인풋-받는게-불편함">
+        <span class="has-mr-6">2.2.1</span>
+        <span>인풋 받는게 불편함</span>
+        </a></li><li>
+        <a class="is-flex" href="#메모리-접근에-대해-매우-깐깐함">
+        <span class="has-mr-6">2.2.2</span>
+        <span>메모리 접근에 대해 매우 깐깐함</span>
+        </a></li><li>
+        <a class="is-flex" href="#값의-소유와-대여">
+        <span class="has-mr-6">2.2.3</span>
+        <span>값의 소유와 대여</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#그래도-C-과-Rust의-비슷한-점">
+        <span class="has-mr-6">2.3</span>
+        <span>그래도 C++과 Rust의 비슷한 점</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Memory-Safety가-잘-보장될까">
+        <span class="has-mr-6">3</span>
+        <span>Memory Safety가 잘 보장될까?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Summary">
+        <span class="has-mr-6">4</span>
+        <span>Summary</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">5</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            최근 글
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/20200724-starting-rust/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/24/20200724-starting-rust/thumbnail.png" alt="러스트 시작해보기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T13:50:38.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/20200724-starting-rust/" class="title has-link-black-ter is-size-6 has-text-weight-normal">러스트 시작해보기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/20200411-meteor-grpc-ddp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/11/20200411-meteor-grpc-ddp/meteor_grpc.png" alt="Meteor에서 gRPC, DDP 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T04:39:33.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/20200411-meteor-grpc-ddp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Meteor에서 gRPC, DDP 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/thumbnail.png" alt="Rollup &amp; Svelte 에서 PurgeCSS 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T12:27:16.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/20191109-purgecss-with-rollup-and-svelte/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rollup &amp; Svelte 에서 PurgeCSS 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/28/20191028-html-img-parent-height/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/10/28/20191028-html-img-parent-height/img1.png" alt="img 태그와 부모 태그의 높이가 왜 다를까?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:45:45.000Z">2019-10-28</time></div>
+                    <a href="/2019/10/28/20191028-html-img-parent-height/" class="title has-link-black-ter is-size-6 has-text-weight-normal">img 태그와 부모 태그의 높이가 왜 다를까?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png" alt="Node.js 에서 request 한글 깨짐 문제">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T08:28:11.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js 에서 request 한글 깨짐 문제</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Node-js/">Node.js</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            아카이브
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">7월 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">4월 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">11월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                태그
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rust/">
+                        <span class="tag">Rust</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gRPC/">
+                        <span class="tag">gRPC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meteor/">
+                        <span class="tag">meteor</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/node-js/">
+                        <span class="tag">node.js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/rollup/">
+                        <span class="tag">rollup</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/svelte/">
+                        <span class="tag">svelte</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/webpack/">
+                        <span class="tag">webpack</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="러스트 시작해보기" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 문태근&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("ko");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="입력 하세요..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '포스트',
+                PAGES: '페이지',
+                CATEGORIES: '카테고리',
+                TAGS: '태그',
+                UNTITLED: '(제목없음)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
