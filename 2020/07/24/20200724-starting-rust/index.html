@@ -176,7 +176,7 @@
             
         </h1>
         <div class="content">
-            <p>요새 러스트가 핫하다고 해서 한번 배워보았고, 알고리즘 문제를 풀어보며 C++과 느낌이 어떻게 다른지 비교 해 보았다.</p>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>요새 러스트가 핫하다고 해서 한번 배워보았고, 알고리즘 문제를 풀어보며 C++과 느낌이 어떻게 다른지 비교 해 보았다.</p>
 <a id="more"></a>
 
 <h1 id="Why-Rust"><a href="#Why-Rust" class="headerlink" title="Why Rust?"></a>Why Rust?</h1><p>요즘들어 파이썬이나 Node.js로 작업을 많이 하고 있었는데, 용량이 수십 MB, 수 GB 하는 데이터를 처리하다 보니 속도가 느린게 너무 심하게 체감이 되었다. 스크립팅 언어의 퍼포먼스 한계를 느끼면서, 네이티브로 컴파일되는 언어도 하나 배워야 할 필요성을 느끼게 되었다. 그래서 요즘 핫한 Go와 Rust 둘중에 고민하였는데, </p>
@@ -252,6 +252,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/07/27/20200727-closure-and-free-vars/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">클로저에서 캡처된 변수는 어디 저장될까?</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/11/20200411-meteor-grpc-ddp/">
@@ -323,7 +330,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        7
                     </p>
                 </div>
             </div>
@@ -343,7 +350,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        12
                     </p>
                 </div>
             </div>
@@ -424,7 +431,7 @@
                 <span class="level-item">Programming Language</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -437,7 +444,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/gRPC/" style="font-size: 10px;">gRPC</a> <a href="/tags/meteor/" style="font-size: 10px;">meteor</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/rollup/" style="font-size: 10px;">rollup</a> <a href="/tags/svelte/" style="font-size: 10px;">svelte</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/gRPC/" style="font-size: 10px;">gRPC</a> <a href="/tags/meteor/" style="font-size: 10px;">meteor</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/rollup/" style="font-size: 10px;">rollup</a> <a href="/tags/svelte/" style="font-size: 10px;">svelte</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
     
@@ -505,6 +512,25 @@
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/27/20200727-closure-and-free-vars/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/27/20200727-closure-and-free-vars/thumbnail.png" alt="클로저에서 캡처된 변수는 어디 저장될까?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T11:43:21.000Z">2020-07-27</time></div>
+                    <a href="/2020/07/27/20200727-closure-and-free-vars/" class="title has-link-black-ter is-size-6 has-text-weight-normal">클로저에서 캡처된 변수는 어디 저장될까?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -582,25 +608,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png" alt="Node.js 에서 request 한글 깨짐 문제">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T08:28:11.000Z">2019-10-25</time></div>
-                    <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js 에서 request 한글 깨짐 문제</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Node-js/">Node.js</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -618,7 +625,7 @@
                     <span class="level-item">7월 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -672,6 +679,27 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Go/">
+                        <span class="tag">Go</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -812,6 +840,25 @@
         
         <article class="media">
             
+            <a href="/2020/07/27/20200727-closure-and-free-vars/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/27/20200727-closure-and-free-vars/thumbnail.png" alt="클로저에서 캡처된 변수는 어디 저장될까?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T11:43:21.000Z">2020-07-27</time></div>
+                    <a href="/2020/07/27/20200727-closure-and-free-vars/" class="title has-link-black-ter is-size-6 has-text-weight-normal">클로저에서 캡처된 변수는 어디 저장될까?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/07/24/20200724-starting-rust/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/07/24/20200724-starting-rust/thumbnail.png" alt="러스트 시작해보기">
@@ -886,25 +933,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png" alt="Node.js 에서 request 한글 깨짐 문제">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T08:28:11.000Z">2019-10-25</time></div>
-                    <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js 에서 request 한글 깨짐 문제</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Node-js/">Node.js</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -922,7 +950,7 @@
                     <span class="level-item">7월 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -976,6 +1004,27 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Go/">
+                        <span class="tag">Go</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

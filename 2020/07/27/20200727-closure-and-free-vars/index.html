@@ -7,22 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>아카이브: 2019/10 - LunaTK&#39;s Blog</title>
+<title>클로저에서 캡처된 변수는 어디 저장될까? - LunaTK&#39;s Blog</title>
 
 
-    <meta name="description" content="태근이의 개인 블로그">
-<meta name="keywords" content="developer, coding, tech">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LunaTK&#39;s Blog">
-<meta property="og:url" content="https://lunatk.github.io/archives/2019/10/index.html">
+    <meta name="description" content="클로저(Closure)는 자신이 생성(선언)된 외부 환경을 기억(Capture)하는 함수이다. 이 글에서는 Python, Javascript, Go가 각각 어떻게 이를 구현하는지를 알아보았다.">
+<meta name="keywords" content="Go,Python,Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로저에서 캡처된 변수는 어디 저장될까?">
+<meta property="og:url" content="https://lunatk.github.io/2020/07/27/20200727-closure-and-free-vars/index.html">
 <meta property="og:site_name" content="LunaTK&#39;s Blog">
-<meta property="og:description" content="태근이의 개인 블로그">
+<meta property="og:description" content="클로저(Closure)는 자신이 생성(선언)된 외부 환경을 기억(Capture)하는 함수이다. 이 글에서는 Python, Javascript, Go가 각각 어떻게 이를 구현하는지를 알아보았다.">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="https://lunatk.github.io/images/og_image.png">
+<meta property="og:image" content="https://lunatk.github.io/2020/07/27/20200727-closure-and-free-vars/thumbnail.png">
+<meta property="og:updated_time" content="2020-07-27T13:51:04.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LunaTK&#39;s Blog">
-<meta name="twitter:description" content="태근이의 개인 블로그">
-<meta name="twitter:image" content="https://lunatk.github.io/images/og_image.png">
+<meta name="twitter:title" content="클로저에서 캡처된 변수는 어디 저장될까?">
+<meta name="twitter:description" content="클로저(Closure)는 자신이 생성(선언)된 외부 환경을 기억(Capture)하는 함수이다. 이 글에서는 Python, Javascript, Go가 각각 어떻게 이를 구현하는지를 알아보았다.">
+<meta name="twitter:image" content="https://lunatk.github.io/2020/07/27/20200727-closure-and-free-vars/thumbnail.png">
 
 
 
@@ -86,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="LunaTK&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="클로저에서 캡처된 변수는 어디 저장될까?" height="28">
             
             </a>
         </div>
@@ -122,6 +123,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="검색" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -136,94 +141,170 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        10월 2019
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/2020/07/27/20200727-closure-and-free-vars/thumbnail.png" alt="클로저에서 캡처된 변수는 어디 저장될까?">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-27T11:43:21.000Z">2020-07-27</time>
                 
-                <a href="/2019/10/28/20191028-html-img-parent-height/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2019/10/28/20191028-html-img-parent-height/img1.png" alt="img 태그와 부모 태그의 높이가 왜 다를까?">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-27T15:45:45.000Z">2019-10-28</time>
-                        <a href="/2019/10/28/20191028-html-img-parent-height/" class="title has-link-black-ter is-size-6 has-text-weight-normal">img 태그와 부모 태그의 높이가 왜 다를까?</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png" alt="Node.js 에서 request 한글 깨짐 문제">
-                    </p>
-                </a>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-25T08:28:11.000Z">2019-10-25</time>
-                        <a href="/2019/10/25/20191025-nodejs-request-encoding/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js 에서 request 한글 깨짐 문제</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Node-js/">Node.js</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11분 읽기 (나에 대하여 1634 단어)
+                </span>
                 
-                <a href="/2019/10/21/20191021-what-is-webpack-path/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2019/10/21/20191021-what-is-webpack-path/img2.png" alt="webpack:// 경로는 무엇일까?">
-                    </p>
-                </a>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-21T10:37:29.000Z">2019-10-21</time>
-                        <a href="/2019/10/21/20191021-what-is-webpack-path/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack:// 경로는 무엇일까?</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Development/">Development</a> / <a class="has-link-grey -link" href="/categories/Development/Web/">Web</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                클로저에서 캡처된 변수는 어디 저장될까?
+            
+        </h1>
+        <div class="content">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>클로저(Closure)는 자신이 생성(선언)된 외부 환경을 기억(Capture)하는 함수이다. 이 글에서는 Python, Javascript, Go가 각각 어떻게 이를 구현하는지를 알아보았다. </p>
+<a id="more"></a>
+
+<p>클로저에 대한 자세한 설명은 <a href="https://poiemaweb.com/js-closure" target="_blank" rel="noopener">여기</a><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[클로저(closure)의 개념](https://poiemaweb.com/js-closure)
+">[1]</span></a></sup>를 참조하고 생략하고, 이 글에서는 클로저의 기능중 클로저 함수 외부에 선언된 변수를 접근하는 Capturing이 여러 언어에서 어떻게 구현되는지를 살펴보고자 한다.</p>
+<h1 id="여러-언어에서의-Closure"><a href="#여러-언어에서의-Closure" class="headerlink" title="여러 언어에서의 Closure"></a>여러 언어에서의 Closure</h1><p>우선 클로저를 지원하려면 언어 차원에서 함수를 일급 객체(First-class object)로 취급을 해야한다. </p>
+<p>물론 함수가 일급 객체가 아닌 언어에서 클로저를 지원하는 경우도 있다. 그 예로 자바의 경우 Java8 부터 람다 함수가 도입되고 Closure를 사용할 수 있지만, 언어차원에서의 지원이 아니라 함수 하나당 그때그때 익명 클래스를 하나씩 생성하는 꼼수를 사용하며, final로 선언된 변수만 참조할수 있는 등 제약이 많아 완벽하다 할 수는 없다. </p>
+<p>그래서 주로 동적 언어에서 잘 구현되어 있는데, 구글에 클로저를 검색하면 대부분 자바스크립트 언어에 대한 글이 나온다.<br>아마 자바스크립트가 클로저를 제일 아름답고 직관적으로 쓸 수 있어서 그런것 같다. 특히 ES6부터 생긴 화살표 함수를 통한 currying<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[Currying in Javascript](https://dev-momo.tistory.com/entry/Currying-in-Javascript)
+">[2]</span></a></sup>은 아주 아름다운 클로저를 만들어 낸다.</p>
+<p>아래 코드는 자바스크립트에서 커링을 통해 클로저를 만들어내는 예시이다. </p>
+<figure class="highlight javascript hljs"><figcaption><span>closure.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeAdder = <span class="hljs-function">(<span class="hljs-params">add</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">to</span>) =&gt;</span> add + to;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> add2 = makeAdder(<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> add5 = makeAdder(<span class="hljs-number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(add2(<span class="hljs-number">10</span>)); <span class="hljs-comment">// 12</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(add5(<span class="hljs-number">10</span>)); <span class="hljs-comment">// 15</span></span><br></pre></td></tr></table></figure>
+
+<p>파이썬의 경우 언어차원에서 지원을 하긴 하는데… 파이썬으로 만들면 클로저가 뭔가 조잡해 보인다. 람다함수가 무조건 하나의 statement이어야 하는 제약때문에 한계도 많고, 무엇보다 <strong>안이쁘다</strong>. 위 코드를 파이썬으로 만들면 아래와 같다.</p>
+<figure class="highlight python hljs"><figcaption><span>closure.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">make_adder = <span class="hljs-keyword">lambda</span> add: <span class="hljs-keyword">lambda</span> to: add + to</span><br><span class="line"></span><br><span class="line">add2 = make_adder(<span class="hljs-number">2</span>)</span><br><span class="line">add5 = make_adder(<span class="hljs-number">5</span>)</span><br><span class="line"></span><br><span class="line">print(add2(<span class="hljs-number">10</span>)) <span class="hljs-comment"># 12</span></span><br><span class="line">print(add5(<span class="hljs-number">10</span>)) <span class="hljs-comment"># 15</span></span><br></pre></td></tr></table></figure>
+
+<p>그런데 의외로 컴파일 언어인 Go에서 함수가 일급 객체이며, 클로저를 지원한다고 한다.</p>
+<p>각각의 언어는 어떻게 캡처(Capture)한 변수를 저장할까?</p>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><p>Javascript 관련한 내용은 워낙 좋은 자료가 많은데, Toast에서 게시된 <a href="https://meetup.toast.com/posts/86" target="_blank" rel="noopener">이 글</a><sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[자바스크립트의 스코프와 클로저](https://meetup.toast.com/posts/86)
+">[3]</span></a></sup>이 제일 잘 설명하고 있는 것 같으니, 꼭 한번 보길 권장한다.</p>
+<p>자바스크립트는 함수가 선언되어 있는 <em>Lexical Scope</em>를 기억하며, 이 Scope 객체 안에 함수 내에 선언된 변수들이 저장된다. </p>
+<p>용어가 무서운데, <em>Dynamic Scope</em>와 비교하면 이해하기 쉽다.</p>
+<ul>
+<li><em>Lexical Scope</em> : <strong>소스코드상의 위치</strong>를 기준으로 context 판단</li>
+<li><em>Dynamic Scope</em> : <strong>실행 상태</strong>를 기준으로 context 판단</li>
+</ul>
+<p>함수가 여러겹 겹쳐있을 수 있으니, Lexical Scope는 체인 형태로 함수가 내부적으로 가지고 있게 된다. 함수 내에서 변수에 접근하면, 제일 가까운 Scope부터 해당 변수가 선언되어 있는지 찾으며 마지막은 Global scope를 탐색한다.</p>
+<center>
+  <img src="/2020/07/27/20200727-closure-and-free-vars/lexical_scope.png">
+  <small>
+    Javascript에서 Lexical Scope를 통해 변수를 찾는 과정
+  </small>
+</center>
+
+<p>클로저에서 Capturing이 발생하면, 클로저가 속해있던 Lexical Scope를 클로저를 만들어 낸 함수가 종료된 후에도 체인에서 없애지 않고 유지한다. </p>
+<p>이때 클로저에서 사용되지 않는 변수는 가비지 컬렉터에 의해 수거되어 Scope 객체에서 사라진다.</p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>파이썬에서는 함수도 객체(Object)이다. 파이썬은 인터프리터가 코드를 해석하면서 클로저에 Capture된다고 판단한 외부 변수는 함수 객체 내의 <code>__closure__</code> 라는 특별한 변수에 저장한다<sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[파이썬 - 클로저 (Closure)](http://schoolofweb.net/blog/posts/파이썬-클로저-closure/)
+">[4]</span></a></sup>.</p>
+<p>객체에 어떤 속성들이 있는지 확인하는 매직 메소드인 <code>__dir__</code>을 통해 클로저에는 <code>__closure__</code>라는 변수가 존재함을 확인할 수 있다.</p>
+<figure class="highlight python hljs"><figcaption><span>closure2.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer_func</span><span class="hljs-params">()</span>:</span> </span><br><span class="line">  msg = <span class="hljs-string">'Hi'</span></span><br><span class="line">  print(<span class="hljs-string">'outer_func local variables :'</span>, locals())</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner_func</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    inner_var = <span class="hljs-string">'Bye'</span></span><br><span class="line">    print(msg)</span><br><span class="line">    print(<span class="hljs-string">'inner_func local variables :'</span>, locals())</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> inner_func</span><br><span class="line"></span><br><span class="line">my_func = outer_func()</span><br><span class="line">my_func()</span><br><span class="line">print(my_func.__dir__())</span><br></pre></td></tr></table></figure>
+
+<p>위 코드를 실행하면 아래와 같은 결과가 나온다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">outer_func local variables : &#123;&apos;msg&apos;: &apos;HI&apos;&#125;</span><br><span class="line">HI</span><br><span class="line">inner_func local variables : &#123;&apos;inner_var&apos;: &apos;Bye&apos;, &apos;msg&apos;: &apos;HI&apos;&#125;</span><br><span class="line">[&apos;__repr__&apos;, &apos;__call__&apos;, &apos;__get__&apos;, &apos;__new__&apos;, &apos;__closure__&apos;, &apos;__doc__&apos;, &apos;__globals__&apos;, &apos;__module__&apos;, &apos;__code__&apos;, &apos;__defaults__&apos;, &apos;__kwdefaults__&apos;, &apos;__annotations__&apos;, &apos;__dict__&apos;, &apos;__name__&apos;, &apos;__qualname__&apos;, &apos;__hash__&apos;, &apos;__str__&apos;, &apos;__getattribute__&apos;, &apos;__setattr__&apos;, &apos;__delattr__&apos;, &apos;__lt__&apos;, &apos;__le__&apos;, &apos;__eq__&apos;, &apos;__ne__&apos;, &apos;__gt__&apos;, &apos;__ge__&apos;, &apos;__init__&apos;, &apos;__reduce_ex__&apos;, &apos;__reduce__&apos;, &apos;__subclasshook__&apos;, &apos;__init_subclass__&apos;, &apos;__format__&apos;, &apos;__sizeof__&apos;, &apos;__dir__&apos;, &apos;__class__&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>신기한점은 <code>locals</code>라는 로컬 변수를 출력하는 함수를 통해 확인해보면, 캡처된 변수도 일반 지역변수처럼 보인다는 것이다. 프로그래머의 편의성을 위한것으로 보이며, 실제로 저장은 <code>__closure__</code>에 된다.</p>
+<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><p>Go는 컴파일 언어답게, 이 문제를 컴파일러가 해결한다. 컴파일 하면서 선언된 함수 밖에서도 사용된다고 판단한 변수는 Stack이 아니라 Heap에 저장하게 한다고 한다. </p>
+<p>신기한게 이 외에도 <code>new</code>를 통해 동적 할당한 메모리도 함수 내에서만 쓰이면 Stack에 할당하는 듯 힙 사용 최적화를 하는듯 하다<sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[golang - 스택과 힙에 대해](https://jacking75.github.io/go_stackheap/)">[5]</span></a></sup>. </p>
+<p>어떤 경우에 스택에 선언되고, 어떤 경우에 힙에 선언되는지는 <a href="https://jacking75.github.io/go_stackheap/" target="_blank" rel="noopener">여기</a><sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[golang - 스택과 힙에 대해](https://jacking75.github.io/go_stackheap/)">[5]</span></a></sup> 잘 정리되어 있으니, 꼭 한번 보길 추천한다. </p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>위 내용을 표로 정리하면 다음과 같다.</p>
+<table>
+<thead>
+<tr>
+<th>언어</th>
+<th>저장위치</th>
+<th>방식</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Javascript</td>
+<td>Lexical Scope 체인 유지</td>
+<td>캡처되지 않는 변수는 스코프 객체에서 제거</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>함수 Object 내 <code>__closure__</code> 필드</td>
+<td>캡처되는 변수만 추가</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>Heap 메모리</td>
+<td>컴파일 타임에 저장위치 결정</td>
+</tr>
+</tbody></table>
+<p>결국은 다 Heap에 저장한다.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://poiemaweb.com/js-closure" target="_blank" rel="noopener">클로저(closure)의 개념</a><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://dev-momo.tistory.com/entry/Currying-in-Javascript" target="_blank" rel="noopener">Currying in Javascript</a><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://meetup.toast.com/posts/86" target="_blank" rel="noopener">자바스크립트의 스코프와 클로저</a><a href="#fnref:3" rev="footnote"> ↩</a></span></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">4.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="http://schoolofweb.net/blog/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%81%B4%EB%A1%9C%EC%A0%80-closure/" target="_blank" rel="noopener">파이썬 - 클로저 (Closure)</a><a href="#fnref:4" rev="footnote"> ↩</a></span></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://jacking75.github.io/go_stackheap/" target="_blank" rel="noopener">golang - 스택과 힙에 대해</a><a href="#fnref:5" rev="footnote"> ↩</a></span></li></ol></div></div>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Go/">Go</a>, <a class="has-link-grey -link" href="/tags/Javascript/">Javascript</a>, <a class="has-link-grey -link" href="/tags/Python/">Python</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5daec0480ce1380019631c89&amp;product=inline-share-buttons' async='async'></script>
+
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/07/24/20200724-starting-rust/">
+                <span class="level-item">러스트 시작해보기</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">댓글</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://lunatk.github.io/2020/07/27/20200727-closure-and-free-vars/" data-num-posts="5"></div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -390,6 +471,40 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카탈로그
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#여러-언어에서의-Closure">
+        <span class="has-mr-6">1</span>
+        <span>여러 언어에서의 Closure</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Javascript">
+        <span class="has-mr-6">1.1</span>
+        <span>Javascript</span>
+        </a></li><li>
+        <a class="is-flex" href="#Python">
+        <span class="has-mr-6">1.2</span>
+        <span>Python</span>
+        </a></li><li>
+        <a class="is-flex" href="#Go">
+        <span class="has-mr-6">1.3</span>
+        <span>Go</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Summary">
+        <span class="has-mr-6">2</span>
+        <span>Summary</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">3</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
         
             <div class="card widget">
     <div class="card-content">
@@ -661,6 +776,40 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카탈로그
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#여러-언어에서의-Closure">
+        <span class="has-mr-6">1</span>
+        <span>여러 언어에서의 Closure</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Javascript">
+        <span class="has-mr-6">1.1</span>
+        <span>Javascript</span>
+        </a></li><li>
+        <a class="is-flex" href="#Python">
+        <span class="has-mr-6">1.2</span>
+        <span>Python</span>
+        </a></li><li>
+        <a class="is-flex" href="#Go">
+        <span class="has-mr-6">1.3</span>
+        <span>Go</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Summary">
+        <span class="has-mr-6">2</span>
+        <span>Summary</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">3</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
     
         <div class="card widget">
     <div class="card-content">
@@ -932,7 +1081,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="LunaTK&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="클로저에서 캡처된 변수는 어디 저장될까?" height="28">
                 
                 </a>
                 <p class="is-size-7">
