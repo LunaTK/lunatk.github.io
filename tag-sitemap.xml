@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://lunatk.github.io/tags/node-js/</loc>
+        <lastmod>2020-08-04T07:53:27.603Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/tags/Javascript/</loc>
         <lastmod>2020-07-27T13:51:04.783Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -75,13 +82,6 @@
     <url>
         <loc>https://lunatk.github.io/tags/webpack/</loc>
         <lastmod>2019-10-27T16:01:07.844Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://lunatk.github.io/tags/node-js/</loc>
-        <lastmod>2019-10-27T16:01:06.267Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

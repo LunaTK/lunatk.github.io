@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/</loc>
+        <lastmod>2020-08-04T07:53:27.603Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/2020/07/27/20200727-closure-and-free-vars/</loc>
         <lastmod>2020-07-27T13:51:04.783Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -50,14 +58,6 @@
     <url>
         <loc>https://lunatk.github.io/2019/10/21/20191021-what-is-webpack-path/</loc>
         <lastmod>2019-10-27T16:01:07.844Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/</loc>
-        <lastmod>2019-10-27T16:01:06.267Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

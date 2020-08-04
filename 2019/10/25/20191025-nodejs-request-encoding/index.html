@@ -19,7 +19,7 @@
 <meta property="og:description" content="Node.js 에서 request 모듈을 사용하여 학교 홈페이지를 크롤링 하는 도중 한글이 깨지는 문제가 발생하였다.">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png">
-<meta property="og:updated_time" content="2019-10-27T16:01:06.267Z">
+<meta property="og:updated_time" content="2020-08-04T07:53:27.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js 에서 request 한글 깨짐 문제">
 <meta name="twitter:description" content="Node.js 에서 request 모듈을 사용하여 학교 홈페이지를 크롤링 하는 도중 한글이 깨지는 문제가 발생하였다.">
@@ -163,7 +163,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 읽기 (나에 대하여 586 단어)
+                    4분 읽기 (나에 대하여 615 단어)
                 </span>
                 
                 
@@ -179,33 +179,56 @@
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Node.js 에서 <code>request</code> 모듈을 사용하여 학교 홈페이지를 크롤링 하는 도중 한글이 깨지는 문제가 발생하였다.</p>
 <a id="more"></a>
 
-<p><img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-d219658d-d514-4845-9409-4415100cc5b5.png" alt></p>
-<p>한글 깨짐 현상</p>
+<center>
+  <img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-d219658d-d514-4845-9409-4415100cc5b5.png"><br>
+  <small>
+    사진1. 한글 깨짐 현상
+  </small>
+</center>
+
 <p>한국인으로서 담담하게 받아들일 수 있는 현상이다.</p>
 <p>확인해보니, Node.js는 <code>UTF-8</code>을 기본 인코딩으로 사용하는데 학교 홈페이지는 <code>EUC-KR</code>을 사용해서 글자가 깨지는 것 같았다.</p>
-<p><img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-a33c1e21-f337-49fa-88e8-5c9a295c8edc.png" alt></p>
-<p>웹페이지 인코딩 확인</p>
-<p>그래서 <a href="https://stories.pe.kr/215" target="_blank" rel="noopener">EUC-KR 디코딩</a>을 하게 해 주었는데, 여전히 표시가 잘 안되었다.</p>
-<p><img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png" alt></p>
-<p>EUC-KR 처리 후 한글 깨짐 현상</p>
+<center>
+  <img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-a33c1e21-f337-49fa-88e8-5c9a295c8edc.png">
+  <small>
+    사진2. 웹페이지 인코딩 확인
+  </small>
+</center>
+
+
+<p>그래서 <code>iconv</code> 라이브러리를 이용해 <a href="https://stories.pe.kr/215" target="_blank" rel="noopener">EUC-KR 디코딩</a>을 하게 해 주었는데, 이번엔 다른 문자로 글자가 깨졌다.</p>
+<center>
+  <img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-26832150-96d7-4be8-840b-5729f29cb4b7.png"><br>
+  <small>
+    사진3. EUC-KR 처리 후 한글 깨짐 현상
+  </small>
+</center>
+
 <h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>그런데 이 <code>占쏙옙</code> 이라는 글자, 낯설지가 않은 사람들이 많을것이다…</p>
 <p>문제를 해결하기에 앞서 왜 한글이 깨지면 저렇게 <code>占쏙옙</code> 이 미친듯이 반복되는지 궁금해 검색 해 보았다.</p>
-<p><img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-2cb0ef53-9f81-4a33-8be9-a59c61bd3a30.png" alt></p>
-<p>占쏙옙 의 정체</p>
-<p>출처 : <a href="https://namu.wiki/w/%E5%8D%A0%EC%8F%99%EC%98%99" target="_blank" rel="noopener">https://namu.wiki/w/占쏙옙</a></p>
+<center>
+  <img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-2cb0ef53-9f81-4a33-8be9-a59c61bd3a30.png">
+  <small>
+    사진4. 출처 : <a href="https://namu.wiki/w/%E5%8D%A0%EC%8F%99%EC%98%99" target="_blank" rel="noopener">https://namu.wiki/w/占쏙옙</a>
+  </small>
+</center>
+
 <p>정리하자면 다음과 같다.</p>
 <ol>
-<li><code>EUC-KR</code>로 표현된 데이터 <code>UTF-8</code>로 저장한다.</li>
-<li>이때 <code>UTF-8</code>로 표현될 수 없는 문자는 모두 “표현 불가” 문자, 즉 � 로 치환된다.</li>
-<li>이를 다시 <code>EUC-KR</code>로 취급하여 <code>UTF-8</code>로 변환하려 하면, <code>占쏙옙</code> 이 된다.</li>
+<li><code>EUC-KR</code>로 표현된 데이터가 <code>UTF-8</code> 인코딩으로 저장된다.</li>
+<li>이때 <code>UTF-8</code> 범위를 벗어나 표현될 수 없는 문자는 모두 “표현 불가” 문자, 즉 � 로 치환된다. (사진 1)</li>
+<li>이를 다시 <code>EUC-KR</code>로 취급하여 <code>UTF-8</code>로 변환하려 하면, <code>占쏙옙</code> 이 된다. (사진 2)</li>
 </ol>
 <p>이때문에 <code>EUC-KR</code>을 잘못 다루면 <code>占쏙옙</code> 파티를 볼 수 있게 되는 것이었다.</p>
 <p>내가 겪은 문제는 아마 request 모듈에서 <code>EUC-KR</code>을 제대로 처리하지 않고 바로 <code>UTF-8</code>로 저장을 해서, 이미 � 으로 다 치환이 된 상태에서 <code>EUC-KR</code> 디코딩을 시도한게 원인인 것 같았다.</p>
-<h1 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h1><p>해결방법은 간단하다. request 모듈이 문자열 인코딩 처리를 안하게 해주면 된다.</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">		url:<span class="hljs-string">"http://icampus.ac.kr"</span> <span class="hljs-comment">// 원하는 url값을 입력</span></span><br><span class="line">		,<span class="hljs-attr">encoding</span>: <span class="hljs-literal">null</span> <span class="hljs-comment">//해당 값을 null로 해주어야 제대로 iconv가 제대로 decode 해준다.</span></span><br><span class="line">	&#125;</span><br><span class="line">	,(err, res, body) =&gt; &#123;</span><br><span class="line">		<span class="hljs-comment">// 생략</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h1><p>해결방법은 간단하다. request 모듈이 문자열 인코딩 처리를 안하게 해주면 된다. (즉 위의 1, 2번이 발생하지 않게 하면 된다)</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">		url:<span class="hljs-string">"http://icampus.ac.kr"</span> <span class="hljs-comment">// 원하는 url값을 입력</span></span><br><span class="line">		,<span class="hljs-attr">encoding</span>: <span class="hljs-literal">null</span> <span class="hljs-comment">//해당 값을 null로 해주어야 제대로 iconv가 제대로 decode 해준다.</span></span><br><span class="line">  	&#125;</span><br><span class="line">  	,(err, res, body) =&gt; &#123;</span><br><span class="line">		<span class="hljs-comment">// 생략</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>출처 : <a href="http://b1ix.net/322" target="_blank" rel="noopener">http://b1ix.net/322</a></p>
-<p><img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-ffb78e78-64e5-4140-b438-bfa4bba91389.png" alt></p>
+<p>참고 : <a href="http://b1ix.net/322" target="_blank" rel="noopener">http://b1ix.net/322</a></p>
+<center>
+  <img src="/2019/10/25/20191025-nodejs-request-encoding/Untitled-ffb78e78-64e5-4140-b438-bfa4bba91389.png">
+</center>
+
 <p>야! 잘된다</p>
 
         </div>
