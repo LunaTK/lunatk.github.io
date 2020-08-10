@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://lunatk.github.io/2020/08/10/20200810-vscode-remote-gdb/</loc>
+        <lastmod>2020-08-10T13:26:33.613Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/2019/10/25/20191025-nodejs-request-encoding/</loc>
         <lastmod>2020-08-04T07:53:27.603Z</lastmod>
         <changefreq>weekly</changefreq>
