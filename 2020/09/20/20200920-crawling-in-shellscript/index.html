@@ -7,21 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>아카이브: 2020/7 - LunaTK&#39;s Blog</title>
+<title>쉘스크립트로 웹사이트 모니터링 크롤러 만들기 - LunaTK&#39;s Blog</title>
 
 
-    <meta name="description" content="태근이의 개인 블로그">
-<meta name="keywords" content="developer, coding, tech">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LunaTK&#39;s Blog">
-<meta property="og:url" content="https://lunatk.github.io/archives/2020/07/index.html">
+    <meta name="description" content="크롤링을 통해 웹사이트 내의 정보 업데이트를 모니터링하면 편한 경우가 많다. 나는 주로 파이썬이나 node.js를 이용해 크롤러를 만들었는데, 문득 쉘스크립트를 통해 훨씬 단순하게 구현할 수 있겠다는 생각이 들어 만들어 보았다.">
+<meta name="keywords" content="bash,shellscript,crawling">
+<meta property="og:type" content="article">
+<meta property="og:title" content="쉘스크립트로 웹사이트 모니터링 크롤러 만들기">
+<meta property="og:url" content="https://lunatk.github.io/2020/09/20/20200920-crawling-in-shellscript/index.html">
 <meta property="og:site_name" content="LunaTK&#39;s Blog">
-<meta property="og:description" content="태근이의 개인 블로그">
+<meta property="og:description" content="크롤링을 통해 웹사이트 내의 정보 업데이트를 모니터링하면 편한 경우가 많다. 나는 주로 파이썬이나 node.js를 이용해 크롤러를 만들었는데, 문득 쉘스크립트를 통해 훨씬 단순하게 구현할 수 있겠다는 생각이 들어 만들어 보았다.">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://lunatk.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-09-20T09:37:26.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LunaTK&#39;s Blog">
-<meta name="twitter:description" content="태근이의 개인 블로그">
+<meta name="twitter:title" content="쉘스크립트로 웹사이트 모니터링 크롤러 만들기">
+<meta name="twitter:description" content="크롤링을 통해 웹사이트 내의 정보 업데이트를 모니터링하면 편한 경우가 많다. 나는 주로 파이썬이나 node.js를 이용해 크롤러를 만들었는데, 문득 쉘스크립트를 통해 훨씬 단순하게 구현할 수 있겠다는 생각이 들어 만들어 보았다.">
 <meta name="twitter:image" content="https://lunatk.github.io/images/og_image.png">
 
 
@@ -86,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="LunaTK&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="쉘스크립트로 웹사이트 모니터링 크롤러 만들기" height="28">
             
             </a>
         </div>
@@ -122,6 +123,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="검색" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -136,69 +141,197 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        7월 2020
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-09-20T03:44:28.000Z">2020-09-20</time>
                 
-                <a href="/2020/07/27/20200727-closure-and-free-vars/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2020/07/27/20200727-closure-and-free-vars/thumbnail.png" alt="클로저에서 캡처된 변수는 어디 저장될까?">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-07-27T11:43:21.000Z">2020-07-27</time>
-                        <a href="/2020/07/27/20200727-closure-and-free-vars/" class="title has-link-black-ter is-size-6 has-text-weight-normal">클로저에서 캡처된 변수는 어디 저장될까?</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Development/">Development</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Development/Terminal/">Terminal</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <a href="/2020/07/24/20200724-starting-rust/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2020/07/24/20200724-starting-rust/thumbnail.png" alt="러스트 시작해보기">
-                    </p>
-                </a>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-07-24T13:50:38.000Z">2020-07-24</time>
-                        <a href="/2020/07/24/20200724-starting-rust/" class="title has-link-black-ter is-size-6 has-text-weight-normal">러스트 시작해보기</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Programming-Language/">Programming Language</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9분 읽기 (나에 대하여 1318 단어)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                쉘스크립트로 웹사이트 모니터링 크롤러 만들기
+            
+        </h1>
+        <div class="content">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>크롤링을 통해 웹사이트 내의 정보 업데이트를 모니터링하면 편한 경우가 많다. 나는 주로 파이썬이나 node.js를 이용해 크롤러를 만들었는데, 문득 쉘스크립트를 통해 훨씬 단순하게 구현할 수 있겠다는 생각이 들어 만들어 보았다.</p>
+<a id="more"></a>
+
+<p>아마 단순 모니터링을 위한 크롤러 대부분은 아래와 같은 순서를 따를것이다.</p>
+<ol>
+<li>HTTP 요청을 통한 웹사이트 데이터 가져오기</li>
+<li>데이터 전처리를 통해 필요한 부분 추출하기</li>
+<li>업데이트가 있는지 이전 데이터와 비교하기</li>
+<li>업데이트가 있을시 사용자에게 알림 보내기</li>
+</ol>
+<p>그동안에 파이썬이나 node.js로 위같은 일을 하는 크롤러를 구현하기 위해 준비단계가 좀 길었다.</p>
+<ul>
+<li>프로젝트 폴더 만들고</li>
+<li>npm init 하고</li>
+<li>dependency 설치하고…</li>
+</ul>
+<p>그렇게 node.js로 만든 크롤러는 각 부분을 아래와 같은 방법으로 구현하였다.</p>
+<ol>
+<li>HTTP 요청<ul>
+<li>request 라이브러리</li>
+</ul>
+</li>
+<li>데이터 전처리<ul>
+<li>javascript 코드</li>
+</ul>
+</li>
+<li>업데이트가 있는지 이전 데이터와 비교<ul>
+<li>mongodb 사용</li>
+</ul>
+</li>
+<li>업데이트 알림<ul>
+<li>nodemailer 이용, 이메일로 알림 전송</li>
+</ul>
+</li>
+<li>위 과정 반복<ul>
+<li>pm2로 백그라운드 실행</li>
+</ul>
+</li>
+</ol>
+<p>mongodb 사용은 약간 오버스러운 느낌이 있지만, 그걸 제외하더라도 크롤러 하나를 위해서 꽤 많은 라이브러리와 코드가 들어갔었다.</p>
+<p>그런데 쉘스크립트를 공부하다 보니 저정도 기능이면 굳이 파이썬이나 node.js 쓰면서 라이브러리를 덕지덕지 가져다 쓸 필요도 없겠다는 생각이 들었다. </p>
+<h1 id="쉘스크립트-구현"><a href="#쉘스크립트-구현" class="headerlink" title="쉘스크립트 구현"></a>쉘스크립트 구현</h1><p>쉘스크립트로 크롤러를 만들때는 각 부분을 아래와 같은 방법으로 구현하였다.</p>
+<ol>
+<li>HTTP 요청<ul>
+<li>curl를 통해 REST API 요청</li>
+</ul>
+</li>
+<li>데이터 전처리<ul>
+<li>jq를 통해 JSON 전처리</li>
+</ul>
+</li>
+<li>업데이트가 있는지 이전 데이터와 비교<ul>
+<li>텍스트파일로 저장</li>
+</ul>
+</li>
+<li>업데이트 알림<ul>
+<li>terminal-notifier</li>
+</ul>
+</li>
+<li>위 과정청반복<ul>
+<li>cron</li>
+</ul>
+</li>
+</ol>
+<p>데이터 전처리를 위해 터미널 JSON 프로세서인 <a href="https://github.com/stedolan/jq" target="_blank" rel="noopener"><code>jq</code></a>, 맥북에서 알림을 띄워주는 프로그램인 <a href="https://github.com/julienXX/terminal-notifier" target="_blank" rel="noopener"><code>terminal-notifier</code></a> 정도만 추가로 설치하였고, <code>curl</code>, <code>cron</code> 같이 대부분의 기능은 리눅스나 macOS에서 기본 제공하는 터미널 명령어로 해결이 가능했다.</p>
+<h1 id="사용한-명령어"><a href="#사용한-명령어" class="headerlink" title="사용한 명령어"></a>사용한 명령어</h1><p>각 명령어를 사용한 이유는 아래와 같다.</p>
+<ul>
+<li>curl<ul>
+<li>터미널에서 HTTP 요청 하는데 별다른 방법이 있나 싶다</li>
+</ul>
+</li>
+<li>jq<ul>
+<li>내가 크롤링 할 사이트는 운좋게도 내부적으로 REST API 엔드포인트를 가지고 있었다</li>
+<li>리스폰스 데이터가 json이라 터미널용 JSON 프로세서인 <code>jq</code>를 사용하였다</li>
+<li>개발자들 가져다 쓰라고 오픈해놓은건 아니지만 사용에 딱히 제약은 없어보여서 찾아내서 사용하였다</li>
+<li>만약 리스폰스 데이터가 HTML이거나 하면 다른 프로세서 툴을 사용하면 될것같다</li>
+</ul>
+</li>
+<li>terminal-notifier<ul>
+<li>원래 구현대로 mail 보내는 방법도 생각해 보았다. <code>curl</code>로 gmail 보내는 방법도 있긴 하였지만<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://stackoverflow.com/questions/14722556/using-curl-to-send-email">[1]</span></a></sup>, 생각해보니 메일로 알림은 핸드폰으로 오는데 알림을 주로 보는 시간대는 내가 맥북을 쓰고있을때라 맥북 알림으로 오는게 더 좋을것 같았다.</li>
+<li>실제로 써보니 맥북 알림이 훨씬 편하였다</li>
+<li><img src="/2020/09/20/20200920-crawling-in-shellscript/notification.png" alt></li>
+</ul>
+</li>
+<li>cron<ul>
+<li>쉘 스크립트 자체에 sleep을 주고 백그라운드에서도 실행하는 방법이 있겠지만, <code>cron</code>을 쓰는게 더 깔끔하고 매번 부팅할때마다 다시 실행할 필요가 없어서 선택하였다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><p>아래는 실제 크롤링에 사용한 코드이다.</p>
+<script src="https://gist.github.com/LunaTK/9c7e40a581eb0ed50c48c51ad2892650.js"></script>
+
+<p>crontab 설정할때는 쉘 스크립트에서 실행할 바이너리 파일을 찾을 <code>PATH</code> 경로를 따로 명시해 주어야 했다. corntab 설정 파일은 아래와 같다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=&quot;/usr/local/bin:/usr/bin:/bin:$PATH&quot;</span><br><span class="line">NOTICE_PATH=&quot;/Users/LunaTK/Developer/notice-crawler&quot;</span><br><span class="line"></span><br><span class="line">*/10 * * * * cd $NOTICE_PATH &amp;&amp; $NOTICE_PATH/notice-crawler.sh &gt;&gt; $NOTICE_PATH/log.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>크롤링은 10분마다 실행되게 하였고, <code>log.txt</code>에 업데이트가 있을시 기록하게 설정하였다.</p>
+<h1 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h1><p>이 크롤링하는 코드는 원래 node.js로 만들어 놓았던게 있었는데, 쉘스크립트로 다시 구현해보면서 느낀 장점은 아래와 같다.</p>
+<ol>
+<li>관심사 분리가 터미널 명령어로 자연스럽게 되어서 코드가 훨씬 깔끔하다<ul>
+<li>HTTP요청은 <code>curl</code>, 데이터 전처리는 <code>jq</code>, 알림은 <code>terminal-notifier</code></li>
+<li>각 부분을 연결하는 코드만 쉘스크립트로 작성</li>
+</ul>
+</li>
+<li><del>왠지 터미널 빡고수가 된듯한 느낌이 들어 기분이 좋다</del></li>
+</ol>
+<p>여러 부분에 응용해서 써먹으면 좋을것 같다.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://stackoverflow.com/questions/14722556/using-curl-to-send-email<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/bash/">bash</a>, <a class="has-link-grey -link" href="/tags/crawling/">crawling</a>, <a class="has-link-grey -link" href="/tags/shellscript/">shellscript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5daec0480ce1380019631c89&amp;product=inline-share-buttons' async='async'></script>
+
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/10/20200910-modern-cli-tools/">
+                <span class="level-item">모던 CLI 툴 추천 리스트</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">댓글</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://lunatk.github.io/2020/09/20/20200920-crawling-in-shellscript/" data-num-posts="5"></div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -381,6 +514,36 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카탈로그
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#쉘스크립트-구현">
+        <span class="has-mr-6">1</span>
+        <span>쉘스크립트 구현</span>
+        </a></li><li>
+        <a class="is-flex" href="#사용한-명령어">
+        <span class="has-mr-6">2</span>
+        <span>사용한 명령어</span>
+        </a></li><li>
+        <a class="is-flex" href="#코드">
+        <span class="has-mr-6">3</span>
+        <span>코드</span>
+        </a></li><li>
+        <a class="is-flex" href="#장점">
+        <span class="has-mr-6">4</span>
+        <span>장점</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">5</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
         
             <div class="card widget">
     <div class="card-content">
@@ -723,6 +886,36 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카탈로그
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#쉘스크립트-구현">
+        <span class="has-mr-6">1</span>
+        <span>쉘스크립트 구현</span>
+        </a></li><li>
+        <a class="is-flex" href="#사용한-명령어">
+        <span class="has-mr-6">2</span>
+        <span>사용한 명령어</span>
+        </a></li><li>
+        <a class="is-flex" href="#코드">
+        <span class="has-mr-6">3</span>
+        <span>코드</span>
+        </a></li><li>
+        <a class="is-flex" href="#장점">
+        <span class="has-mr-6">4</span>
+        <span>장점</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">5</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
     
         <div class="card widget">
     <div class="card-content">
@@ -1065,7 +1258,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="LunaTK&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="쉘스크립트로 웹사이트 모니터링 크롤러 만들기" height="28">
                 
                 </a>
                 <p class="is-size-7">
