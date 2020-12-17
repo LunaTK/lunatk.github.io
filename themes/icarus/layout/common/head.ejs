@@ -6,6 +6,12 @@
 <%- meta() %>
 <title><%= page_title() %></title>
 
+<style>
+    center {
+        margin: 2em 0;
+    }
+</style>
+
 <% if (has_config('open_graph')) { %>
     <%- open_graph({
         twitter_id: get_config('open_graph.twitter_id'),
