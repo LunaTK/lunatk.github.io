@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>https://lunatk.github.io/2021/02/07/20210207-type-in-typescript/</loc>
+        <lastmod>2021-02-09T04:28:26.362Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/2021/02/01/20210201-as-a-cs-major-developer/</loc>
-        <lastmod>2021-02-01T09:50:02.094Z</lastmod>
+        <lastmod>2021-02-09T04:11:12.563Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +25,7 @@
 
     <url>
         <loc>https://lunatk.github.io/2020/12/14/20201214-why-is-apple-m1-chip-so-fast/</loc>
-        <lastmod>2020-12-17T07:22:26.362Z</lastmod>
+        <lastmod>2021-02-09T04:11:12.562Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

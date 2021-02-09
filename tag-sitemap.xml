@@ -3,22 +3,36 @@
 
 
     <url>
+        <loc>https://lunatk.github.io/tags/type-system/</loc>
+        <lastmod>2021-02-09T04:28:26.362Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lunatk.github.io/tags/typescript/</loc>
+        <lastmod>2021-02-09T04:28:26.362Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://lunatk.github.io/tags/opinion/</loc>
-        <lastmod>2021-02-01T09:50:02.094Z</lastmod>
+        <lastmod>2021-02-09T04:11:12.563Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://lunatk.github.io/tags/m1/</loc>
-        <lastmod>2020-12-17T07:22:26.362Z</lastmod>
+        <lastmod>2021-02-09T04:11:12.562Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://lunatk.github.io/tags/macbook/</loc>
-        <lastmod>2020-12-17T07:22:26.362Z</lastmod>
+        <lastmod>2021-02-09T04:11:12.562Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -136,14 +150,14 @@
     </url>
 
     <url>
-        <loc>https://lunatk.github.io/tags/css/</loc>
+        <loc>https://lunatk.github.io/tags/rollup/</loc>
         <lastmod>2020-04-11T05:38:55.276Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://lunatk.github.io/tags/rollup/</loc>
+        <loc>https://lunatk.github.io/tags/css/</loc>
         <lastmod>2020-04-11T05:38:55.276Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
