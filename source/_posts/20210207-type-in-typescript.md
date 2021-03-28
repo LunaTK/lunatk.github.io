@@ -77,6 +77,10 @@ const MyValue = SomeClass;// 값 공간에 쓰이는 class
 1. Literal Type이라고, 가질 수 있는 값을 특정 리터럴 들로만 제한하는 문법이다. 값 공간의 리터럴이 타입으로 쓰인 예외라고 볼 수 있다.
 
 2. `class`와 `enum`은 선언시 값 공간과 타입 공간에 모두 선언되는 예외적인 케이스이다.
+  
+이렇게 값 공간과 타입 공간에서 모두 쓰일 수 있는 것들은, 타입스크립트 컴파일러가 똑똑하게 문맥을 보고 값으로 쓰인건지 타입으로 쓰인건지 결정한다.
+
+하지만 `class`가 양쪽 모두에서 쓰이는걸 보고 `interface` 나 `type` 같은 애들도 타입 공간이 아닌 값 공간에서 쓰려 하면 에러가 발생한다. 이 부분만 주의하면 된다.
 
 # 공간 변환
 
@@ -166,7 +170,22 @@ type MyType = SomeClass | null;
 type MyType = SomeClass & { field: string };
 ```
 
-`|` 연산자와 `&` 연산자가 바로 그것이다. 각각은 곱 타입과 합 타입을 만들어 내는 가장 기초적인 **타입 연산자**이다.
+`|` 연산자와 `&` 연산자가 바로 그것이다. 각각은 합 타입과 곱 타입을 만들어 내는 가장 기초적인 **타입 연산자**이다.
+
+또한 제네릭은 구체적인 타입을 만들어 내는 **함수**(타입 생성자)라 볼 수 있다. 제네릭의 구체적 타입을 결정 해 주는 타입 파라미터를 보면 이름부터 매개변수이지 않은가?
+
+```typescript
+type SomeGeneric<T> = {
+  someField: T;
+}
+
+// 구체적인 타입을 만듦
+type SomeConcreteType = SomeGeneric<string>; 
+```
+
+위 코드에서 `SomeGeneric`은 매개면수로 타입 하나(`T`)를 받아 구체적인 타입을 만들어 주는 함수라고 생각할 수 있다.
+
+`SomeGeneric<string>`에서 괄호 모양을 바꾸면? `SomeGeneric(string)` 과 같이 함수 호출 모양이 되며 (이해를 돕기위한 유효하지 않은 코드), 리턴값은 타입 파라미터 T가 string으로 대체된 구체적 타입 일 것이다.
 
 이 외에도 한 타입으로 다른 타입을 만드는 다양한 타입 연산이 있다. 아래는 대충 정리해 놓은것인데, 한줄 요약으로 이해하기는 쉽지 않을것이라 공식 문서를 참고하면 좋을것 같다. ([Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#inference-from-mapped-types))[^2]
 
